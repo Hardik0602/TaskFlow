@@ -6,7 +6,7 @@ import Inbox from './pages/Inbox'
 import TaskDetail from './pages/TaskDetail'
 import Notifications from './pages/Notifications'
 import Profile from './pages/Profile'
-import ProtectedRoute from './components/ProtectedRoute'
+import ProtectedRoute from './helper/ProtectedRoute'
 import { TaskProvider } from './context/TaskContext'
 const router = createBrowserRouter(
   createRoutesFromElements(

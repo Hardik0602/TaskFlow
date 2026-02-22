@@ -49,9 +49,13 @@ const NavBar = () => {
               <IoNotificationsOutline size={18} />
               <span className='ml-2'>Notifications</span>
               {unreadCount > 0 && (
-                <span className='ml-1 text-white text-xs bg-red-500 px-2 py-0.5 rounded-full font-semibold'>
+                <span class='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
+                  <span class='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
                   {unreadCount}
                 </span>
+                // <span className='ml-1 text-white text-xs bg-red-500 px-2 py-0.5 rounded-full font-semibold'>
+                //   {unreadCount}
+                // </span>
               )}
             </NavLink>
           </div>
@@ -170,7 +174,8 @@ const NavBar = () => {
               <IoNotificationsOutline size={18} />
               <span className='ml-2'>Notifications</span>
               {unreadCount > 0 && (
-                <span className='ml-auto text-white text-xs bg-red-500 px-2 py-0.5 rounded-full font-semibold'>
+                <span class='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
+                  <span class='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
                   {unreadCount}
                 </span>
               )}
