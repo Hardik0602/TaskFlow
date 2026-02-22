@@ -1,6 +1,11 @@
 import React, { useState } from 'react'
 import { useTasks } from '../context/TaskContext'
 import TaskCard from '../components/TaskCard'
+import { MdRefresh } from 'react-icons/md'
+import { HiSortDescending } from 'react-icons/hi'
+import { LuInbox, LuTag } from 'react-icons/lu'
+import { FaRegCheckCircle } from 'react-icons/fa'
+import { IoWarningOutline } from 'react-icons/io5'
 const Inbox = () => {
   const { tasks, refreshTasks } = useTasks()
   const today = new Date()
@@ -92,22 +97,28 @@ const Inbox = () => {
               onClick={handleRefresh}
               disabled={isRefreshing}
               className='flex items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors duration-200 disabled:opacity-50'>
-              <svg
+              {/* <svg
                 className={`w-4 h-4 text-slate-600 ${isRefreshing ? 'animate-spin' : ''}`}
                 fill='none'
                 stroke='currentColor'
                 viewBox='0 0 24 24'>
                 <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15' />
-              </svg>
+              </svg> */}
+              <MdRefresh
+                className={`text-slate-600 ${isRefreshing ? 'animate-spin' : ''}`}
+                size={18} />
               <span className='text-sm font-medium text-slate-700'>Refresh</span>
             </button>
           </div>
           <div className='bg-white rounded-lg border border-slate-200 p-4'>
             <div className='flex flex-col lg:flex-row gap-3'>
               <div className='flex items-center space-x-2 flex-1'>
-                <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12' />
-                </svg>
+                </svg> */}
+                <HiSortDescending
+                  size={18}
+                  className='text-slate-400' />
                 <select
                   value={sortMode}
                   onChange={e => setSortMode(e.target.value)}
@@ -117,9 +128,12 @@ const Inbox = () => {
                 </select>
               </div>
               <div className='flex items-center space-x-2 flex-1'>
-                <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' />
-                </svg>
+                </svg> */}
+                <LuTag
+                  size={18}
+                  className='text-slate-400' />
                 <select
                   value={filters.category}
                   onChange={e => setFilters({ ...filters, category: e.target.value })}
@@ -131,9 +145,12 @@ const Inbox = () => {
                 </select>
               </div>
               <div className='flex items-center space-x-2 flex-1'>
-                <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
-                </svg>
+                </svg> */}
+                <FaRegCheckCircle
+                  size={18}
+                  className='text-slate-400' />
                 <select
                   value={filters.status}
                   onChange={e => setFilters({ ...filters, status: e.target.value })}
@@ -145,9 +162,12 @@ const Inbox = () => {
                 </select>
               </div>
               <div className='flex items-center space-x-2 flex-1'>
-                <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' />
-                </svg>
+                </svg> */}
+                <IoWarningOutline
+                  size={18}
+                  className='text-slate-400' />
                 <select
                   value={filters.priority}
                   onChange={e => setFilters({ ...filters, priority: e.target.value })}
@@ -187,9 +207,12 @@ const Inbox = () => {
           {Object.keys(grouped).length === 0 && (
             <div className='bg-white rounded-lg border border-slate-200 p-12 text-center'>
               <div className='max-w-sm mx-auto'>
-                <svg className='w-16 h-16 text-slate-300 mx-auto mb-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                {/* <svg className='w-16 h-16 text-slate-300 mx-auto mb-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
                   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4' />
-                </svg>
+                </svg> */}
+                <LuInbox
+                  size={80}
+                  className=' text-slate-300 mx-auto mb-4' />
                 <h3 className='text-lg font-semibold text-slate-900 mb-2'>No tasks found</h3>
                 <p className='text-slate-500 mb-6'>
                   {activeFiltersCount > 0

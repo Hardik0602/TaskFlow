@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaArrowTrendDown, FaArrowTrendUp } from 'react-icons/fa6'
 const Stats = ({ title, value, icon, color, subtitle, trend }) => {
   const colorConfig = {
     blue: {
@@ -43,13 +44,19 @@ const Stats = ({ title, value, icon, color, subtitle, trend }) => {
           {trend && (
             <div className='flex items-center gap-1 mt-2'>
               {trend > 0 ? (
-                <svg className='w-4 h-4 text-green-500' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M12 7a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 11-2 0V8.414l-3.293 3.293a1 1 0 01-1.414 0L9 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0L12 9.586 14.586 7H13a1 1 0 01-1-1z' clipRule='evenodd' />
-                </svg>
+                // <svg className='w-4 h-4 text-green-500' fill='currentColor' viewBox='0 0 20 20'>
+                //   <path fillRule='evenodd' d='M12 7a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 11-2 0V8.414l-3.293 3.293a1 1 0 01-1.414 0L9 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0L12 9.586 14.586 7H13a1 1 0 01-1-1z' clipRule='evenodd' />
+                // </svg>
+                <FaArrowTrendUp
+                  className='text-green-500'
+                  size={15} />
               ) : (
-                <svg className='w-4 h-4 text-red-500' fill='currentColor' viewBox='0 0 20 20'>
-                  <path fillRule='evenodd' d='M12 13a1 1 0 011 1v4a1 1 0 11-2 0v-2.586l-3.293 3.293a1 1 0 01-1.414 0L9 15.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0L12 16.586 14.586 14H13a1 1 0 01-1-1z' clipRule='evenodd' />
-                </svg>
+                // <svg className='w-4 h-4 text-red-500' fill='currentColor' viewBox='0 0 20 20'>
+                //   <path fillRule='evenodd' d='M12 13a1 1 0 011 1v4a1 1 0 11-2 0v-2.586l-3.293 3.293a1 1 0 01-1.414 0L9 15.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0L12 16.586 14.586 14H13a1 1 0 01-1-1z' clipRule='evenodd' />
+                // </svg>
+                <FaArrowTrendDown
+                  size={15}
+                  className='text-red-500' />
               )}
               <span className={`text-xs font-medium ${trend > 0 ? 'text-green-600' : 'text-red-600'}`}>
                 {Math.abs(trend)}% {trend > 0 ? 'increase' : 'decrease'}

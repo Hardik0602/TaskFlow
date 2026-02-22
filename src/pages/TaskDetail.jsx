@@ -5,6 +5,9 @@ import { toast } from 'react-toastify'
 import Comments from '../components/Comments'
 import ActionConfirmModal from '../components/ActionConfirmModal'
 import { users } from '../data/users'
+import { IoDocumentTextOutline } from 'react-icons/io5'
+import { FaArrowLeft, FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import { LuCalendar, LuClock4, LuTag } from 'react-icons/lu'
 const TaskDetail = () => {
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedAction, setSelectedAction] = useState(null)
@@ -16,9 +19,12 @@ const TaskDetail = () => {
     return (
       <div className='min-h-screen bg-slate-50 flex items-center justify-center'>
         <div className='text-center'>
-          <svg className='w-16 h-16 text-slate-300 mx-auto mb-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+          {/* <svg className='w-16 h-16 text-slate-300 mx-auto mb-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
             <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' />
-          </svg>
+          </svg> */}
+          <IoDocumentTextOutline
+            size={60}
+            className='mx-auto text-slate-300' />
           <h3 className='text-lg font-semibold text-slate-900 mb-2'>Task Not Found</h3>
           <p className='text-slate-500 mb-6'>The task you're looking for doesn't exist.</p>
           <button
@@ -122,10 +128,11 @@ const TaskDetail = () => {
         <div className='mb-6'>
           <button
             onClick={() => navigate(-1)}
-            className='inline-flex items-center text-slate-600 hover:text-slate-900 transition-colors duration-200 mb-4'>
-            <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+            className='inline-flex gap-1 items-center text-slate-600 hover:text-slate-900 transition-colors duration-200 mb-4'>
+            {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
               <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
-            </svg>
+            </svg> */}
+            <FaArrowLeft size={15} />
             <span className='font-medium'>Back</span>
           </button>
           <h1 className='text-3xl font-bold text-slate-900'>Task Details</h1>
@@ -135,144 +142,14 @@ const TaskDetail = () => {
             <div className='bg-white rounded-lg borde border-slate-200 overflow-hidden'>
               {isOverdue && (
                 <div className='bg-red-600 text-white px-6 py-3 flex items-center gap-2'>
-                  <svg className='w-5 h-5 shrink-0' fill='currentColor' viewBox='0 0 20 20'>
+                  {/* <svg className='w-5 h-5 shrink-0' fill='currentColor' viewBox='0 0 20 20'>
                     <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z' clipRule='evenodd' />
-                  </svg>
+                  </svg> */}
+                  <FaTimesCircle size={15} />
                   <span className='font-semibold'>This task is overdue and requires immediate attention</span>
                 </div>
               )}
-              <div className='p-6 border-b border-slate-200'>
-                <div className='flex items-start justify-between mb-4'>
-                  <h2 className='text-2xl font-bold text-slate-900 flex-1'>{task.title}</h2>
-                  <div className='flex items-center gap-2 ml-4'>
-                    <span className={`inline-flex items-center px-3 py-1 rounded-md text-sm font-medium ${status.bg} ${status.text}`}>
-                      {isOverdue ? 'Overdue' : status.label}
-                    </span>
-                  </div>
-                </div>
-                <p className='text-slate-600 leading-relaxed'>{task.description}</p>
-              </div>
-              <div className='p-6 grid grid-cols-1 md:grid-cols-2 gap-6'>
-                <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
-                    Category
-                  </label>
-                  <div className='flex items-center gap-2'>
-                    <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' />
-                    </svg>
-                    <span className='text-slate-900 font-medium'>{task.category}</span>
-                  </div>
-                </div>
-                <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
-                    Priority
-                  </label>
-                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md ${priority.bg} border ${priority.border}`}>
-                    <div className={`w-2 h-2 rounded-full ${priority.dot}`}></div>
-                    <span className={`text-sm font-medium ${priority.text} capitalize`}>
-                      {task.priority}
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
-                    Due Date
-                  </label>
-                  <div className='flex items-center gap-2'>
-                    <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
-                    </svg>
-                    <span className={`font-medium ${isOverdue ? 'text-red-600' : 'text-slate-900'}`}>
-                      {formatDate(task.dueDate)}
-                    </span>
-                  </div>
-                </div>
-                <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
-                    Submitted By
-                  </label>
-                  <div className='flex items-center gap-2'>
-                    <div className='w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center'>
-                      <span className='text-xs font-medium text-slate-600'>
-                        {task.submittedBy.charAt(0).toUpperCase()}
-                      </span>
-                    </div>
-                    <span className='text-slate-900 font-medium'>{task.submittedBy}</span>
-                  </div>
-                </div>
-                <div className='md:col-span-2'>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
-                    Submitted On
-                  </label>
-                  <div className='flex items-center gap-2'>
-                    <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
-                    </svg>
-                    <span className='text-slate-600'>{formatDate(task.submittedDate)}</span>
-                  </div>
-                </div>
-              </div>
-              {task.details && Object.keys(task.details).length > 0 && (
-                <div className='p-6 bg-slate-50 border-t border-slate-200'>
-                  <h3 className='text-sm font-semibold text-slate-900 uppercase tracking-wider mb-4'>
-                    Additional Details
-                  </h3>
-                  <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                    {Object.entries(task.details).map(([key, value]) => (
-                      <div key={key} className='bg-white rounded-lg border border-slate-200 p-4'>
-                        <label className='text-xs font-medium text-slate-500 uppercase tracking-wider block mb-1'>
-                          {key.replace(/([A-Z])/g, ' $1').trim()}
-                        </label>
-                        <span className='text-slate-900 font-medium'>
-                          {value}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {!isDone && (
-                <div className='p-6 bg-slate-50 border-t border-slate-200'>
-                  <div className='flex flex-col sm:flex-row gap-3'>
-                    <button
-                      onClick={() => {
-                        setSelectedAction('approved')
-                        setModalOpen(true)
-                      }}
-                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200'>
-                      <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
-                      </svg>
-                      <span>Approve</span>
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSelectedAction('in_progress')
-                        setModalOpen(true)
-                      }}
-                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200'>
-                      <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' />
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' />
-                      </svg>
-                      <span>Mark for Review</span>
-                    </button>
-                    <button
-                      onClick={() => {
-                        setSelectedAction('rejected')
-                        setModalOpen(true)
-                      }}
-                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors duration-200'>
-                      <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
-                      </svg>
-                      <span>Reject</span>
-                    </button>
-                  </div>
-                </div>
-              )}
-              {isDone && (
+              {/* {isDone && (
                 <div className={`p-6 border-t ${task.status === 'approved'
                   ? 'bg-green-50 border-green-200'
                   : task.status === 'rejected'
@@ -323,6 +200,155 @@ const TaskDetail = () => {
                         No further action required
                       </p>
                     </div>
+                  </div>
+                </div>
+              )} */}
+              <div className='p-6 border-b border-slate-200'>
+                <div className='flex items-start justify-between mb-4'>
+                  <h2 className='text-2xl font-bold text-slate-900 flex-1'>{task.title}</h2>
+                  <div className='flex items-center gap-2 ml-4'>
+                    <span className={`inline-flex items-center px-3 py-1 rounded-md text-sm font-medium ${status.bg} ${status.text}`}>
+                      {isOverdue ? 'Overdue' : status.label}
+                    </span>
+                  </div>
+                </div>
+                <p className='text-slate-600 leading-relaxed'>{task.description}</p>
+              </div>
+              <div className='p-6 grid grid-cols-1 md:grid-cols-2 gap-6'>
+                <div>
+                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                    Category
+                  </label>
+                  <div className='flex items-center gap-2'>
+                    {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' />
+                    </svg> */}
+                    <LuTag
+                      size={15}
+                      className='text-slate-400' />
+                    <span className='text-slate-900 font-medium'>{task.category}</span>
+                  </div>
+                </div>
+                <div>
+                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                    Priority
+                  </label>
+                  <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md ${priority.bg} border ${priority.border}`}>
+                    <div className={`w-2 h-2 rounded-full ${priority.dot}`}></div>
+                    <span className={`text-sm font-medium ${priority.text} capitalize`}>
+                      {task.priority}
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                    Due Date
+                  </label>
+                  <div className='flex items-center gap-2'>
+                    {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
+                    </svg> */}
+                    <LuCalendar
+                      size={15}
+                      className='text-slate-400' />
+                    <span className={`font-medium ${isOverdue ? 'text-red-600' : 'text-slate-900'}`}>
+                      {formatDate(task.dueDate)}
+                    </span>
+                  </div>
+                </div>
+                <div>
+                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                    Submitted By
+                  </label>
+                  <div className='flex items-center gap-2'>
+                    <div className='w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center'>
+                      <span className='text-xs font-medium text-slate-600'>
+                        {task.submittedBy.charAt(0).toUpperCase()}
+                      </span>
+                    </div>
+                    <span className='text-slate-900 font-medium'>{task.submittedBy}</span>
+                  </div>
+                </div>
+                <div className='md:col-span-2'>
+                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                    Submitted On
+                  </label>
+                  <div className='flex items-center gap-2'>
+                    {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
+                    </svg> */}
+                    <LuClock4
+                      size={15}
+                      className='text-slate-400' />
+                    <span className='text-slate-600'>{formatDate(task.submittedDate)}</span>
+                  </div>
+                </div>
+              </div>
+              {task.details && Object.keys(task.details).length > 0 && (
+                <div className='p-6 bg-slate-50 border-t border-slate-200'>
+                  <h3 className='text-sm font-semibold text-slate-900 uppercase tracking-wider mb-4'>
+                    Additional Details
+                  </h3>
+                  <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
+                    {Object.entries(task.details).map(([key, value]) => (
+                      <div key={key} className='bg-white rounded-lg border border-slate-200 p-4'>
+                        <label className='text-xs font-medium text-slate-500 uppercase tracking-wider block mb-1'>
+                          {key.replace(/([A-Z])/g, ' $1').trim()}
+                        </label>
+                        <span className='text-slate-900 font-medium'>
+                          {value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {!isDone && (
+                <div className='p-6 bg-slate-50 border-t border-slate-200'>
+                  <div className='flex flex-col sm:flex-row gap-3'>
+                    <button
+                      onClick={() => {
+                        setSelectedAction('approved')
+                        setModalOpen(true)
+                      }}
+                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200'>
+                      {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
+                      </svg> */}
+                      <FaRegCheckCircle
+                        className='text-green-100'
+                        size={20} />
+                      <span>Approve</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedAction('in_progress')
+                        setModalOpen(true)
+                      }}
+                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200'>
+                      {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' />
+                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' />
+                      </svg> */}
+                      <FaEye
+                        size={20}
+                        className='text-blue-100' />
+                      <span>Mark for Review</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        setSelectedAction('rejected')
+                        setModalOpen(true)
+                      }}
+                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors duration-200'>
+                      {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
+                      </svg> */}
+                      <FaTimesCircle
+                        size={20}
+                        className='text-red-100' />
+                      <span>Reject</span>
+                    </button>
                   </div>
                 </div>
               )}
