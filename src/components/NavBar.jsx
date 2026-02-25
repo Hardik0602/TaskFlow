@@ -49,8 +49,8 @@ const NavBar = () => {
               <IoNotificationsOutline size={18} />
               <span className='ml-2'>Notifications</span>
               {unreadCount > 0 && (
-                <span class='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
-                  <span class='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
+                <span className='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
+                  <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
                   {unreadCount}
                 </span>
                 // <span className='ml-1 text-white text-xs bg-red-500 px-2 py-0.5 rounded-full font-semibold'>
@@ -121,9 +121,9 @@ const NavBar = () => {
               className='p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors duration-200 relative'>
               {(unreadCount > 0 && !mobileView) && (
                 // <span className='absolute top-1 right-0 w-2 h-2 bg-red-500 rounded-full' />
-                <span class='absolute flex top-1 right-0 size-2.5'>
-                  <span class='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
-                  <span class='relative inline-flex size-2.5 rounded-full bg-red-400' />
+                <span className='absolute flex top-1 right-0 size-2.5'>
+                  <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
+                  <span className='relative inline-flex size-2.5 rounded-full bg-red-400' />
                 </span>
               )}
               {/* <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
@@ -174,8 +174,8 @@ const NavBar = () => {
               <IoNotificationsOutline size={18} />
               <span className='ml-2'>Notifications</span>
               {unreadCount > 0 && (
-                <span class='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
-                  <span class='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
+                <span className='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
+                  <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
                   {unreadCount}
                 </span>
               )}

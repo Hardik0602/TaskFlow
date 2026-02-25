@@ -1,6 +1,6 @@
 import React from 'react'
-import Stats from '../components/Stats'
-import { useTasks } from '../context/TaskContext'
+import Stats from '../../components/Stats'
+import { useTasks } from '../../context/TaskContext'
 import { LuCalendar, LuClipboard, LuClock4 } from 'react-icons/lu'
 import { IoWarningOutline } from 'react-icons/io5'
 import { FaRegCheckCircle } from 'react-icons/fa'
@@ -44,7 +44,7 @@ const Dashboard = () => {
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         <div className='mb-8'>
-          <h1 className='text-3xl font-bold text-slate-900'>Dashboard</h1>
+          <h1 className='text-2xl font-bold text-slate-900'>Dashboard</h1>
           {/* <p className='text-slate-600 mt-1'>Overview of your tasks and activities</p> */}
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
@@ -57,8 +57,7 @@ const Dashboard = () => {
               // </svg>
               <LuClipboard size={25} />
             }
-            color='blue'
-            trend={10} />
+            color='blue' />
           <Stats
             title='Pending'
             value={pending}
@@ -100,7 +99,7 @@ const Dashboard = () => {
               <div>
                 <div className='flex items-center justify-between mb-2'>
                   <div className='flex items-center gap-2'>
-                    <div className='w-3 h-3 bg-red-500 rounded-full'></div>
+                    {/* <div className='w-3 h-3 bg-red-500 rounded-full'></div> */}
                     <span className='text-sm font-medium text-slate-700'>High Priority</span>
                   </div>
                   <span className='text-sm font-semibold text-slate-900'>{highPriority}</span>
@@ -114,7 +113,7 @@ const Dashboard = () => {
               <div>
                 <div className='flex items-center justify-between mb-2'>
                   <div className='flex items-center gap-2'>
-                    <div className='w-3 h-3 bg-amber-500 rounded-full'></div>
+                    {/* <div className='w-3 h-3 bg-amber-500 rounded-full'></div> */}
                     <span className='text-sm font-medium text-slate-700'>Medium Priority</span>
                   </div>
                   <span className='text-sm font-semibold text-slate-900'>{mediumPriority}</span>
@@ -128,7 +127,7 @@ const Dashboard = () => {
               <div>
                 <div className='flex items-center justify-between mb-2'>
                   <div className='flex items-center gap-2'>
-                    <div className='w-3 h-3 bg-blue-500 rounded-full'></div>
+                    {/* <div className='w-3 h-3 bg-blue-500 rounded-full'></div> */}
                     <span className='text-sm font-medium text-slate-700'>Low Priority</span>
                   </div>
                   <span className='text-sm font-semibold text-slate-900'>{lowPriority}</span>
@@ -144,24 +143,24 @@ const Dashboard = () => {
           <div className='bg-white rounded-lg border border-slate-200 p-6'>
             <h2 className='text-lg font-semibold text-slate-900 mb-4'>Quick Insights</h2>
             <div className='space-y-4'>
-              <div className='flex items-start gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg'>
+              <div className='flex items-center gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg'>
                 {/* <svg className='w-5 h-5 text-amber-600 shrink-0 mt-0.5' fill='currentColor' viewBox='0 0 20 20'>
                   <path fillRule='evenodd' d='M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z' clipRule='evenodd' />
                 </svg> */}
                 <IoWarningOutline
-                  size={20}
+                  size={35}
                   className='text-amber-600' />
                 <div>
                   <p className='text-sm font-semibold text-amber-900'>{dueSoon} tasks due soon</p>
                   <p className='text-xs text-amber-700 mt-0.5'>Due within the next 3 days</p>
                 </div>
               </div>
-              <div className='flex items-start gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg'>
+              <div className='flex items-center gap-3 p-3 bg-blue-50 border border-blue-200 rounded-lg'>
                 {/* <svg className='w-5 h-5 text-blue-600 shrink-0 mt-0.5' fill='currentColor' viewBox='0 0 20 20'>
                   <path fillRule='evenodd' d='M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z' clipRule='evenodd' />
                 </svg> */}
                 <LuCalendar
-                  size={20}
+                  size={35}
                   className='text-blue-600' />
                 <div>
                   <p className='text-sm font-semibold text-blue-900'>Completion Rate</p>

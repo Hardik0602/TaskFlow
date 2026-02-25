@@ -1,6 +1,6 @@
 import React from 'react'
-import { useAuth } from '../context/AuthContext'
-import { useTasks } from '../context/TaskContext'
+import { useAuth } from '../../context/AuthContext'
+import { useTasks } from '../../context/TaskContext'
 const Profile = () => {
   const role = 'Manager'
   const active = true
@@ -24,7 +24,7 @@ const Profile = () => {
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         <div className='mb-8'>
-          <h1 className='text-3xl font-bold text-slate-900'>Profile</h1>
+          <h1 className='text-2xl font-bold text-slate-900'>Profile</h1>
           {/* <p className='text-slate-600 mt-1'>Manage your account information</p> */}
         </div>
         <div className='bg-white rounded-lg border border-slate-200 overflow-hidden mb-6'>

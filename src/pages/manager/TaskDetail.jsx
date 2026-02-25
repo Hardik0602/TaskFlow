@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useTasks } from '../context/TaskContext'
+import { useTasks } from '../../context/TaskContext'
 import { toast } from 'react-toastify'
-import Comments from '../components/Comments'
-import ActionConfirmModal from '../components/ActionConfirmModal'
-import { users } from '../data/users'
+import Comments from '../../components/Comments'
+import ActionConfirmModal from '../../components/ActionConfirmModal'
+import { users } from '../../data/users'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { FaArrowLeft, FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import { LuCalendar, LuClock4, LuTag } from 'react-icons/lu'
@@ -135,7 +135,7 @@ const TaskDetail = () => {
             <FaArrowLeft size={15} />
             <span className='font-medium'>Back</span>
           </button>
-          <h1 className='text-3xl font-bold text-slate-900'>Task Details</h1>
+          <h1 className='text-2xl font-bold text-slate-900'>Task Details</h1>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
           <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-6 self-start'>

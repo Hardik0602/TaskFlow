@@ -14,8 +14,13 @@ const Login = () => {
     e.preventDefault()
     setIsLoading(true)
     setTimeout(() => {
-      if (login(email, password)) {
-        navigate('/')
+      const user = login(email, password)
+      if (user) {
+        if (user.role === 'admin') {
+          navigate('/admin')
+        } else {
+          navigate('/')
+        }
       } else {
         toast.error('Invalid credentials')
         setIsLoading(false)
@@ -92,7 +97,7 @@ const Login = () => {
             <button
               type='submit'
               disabled={isLoading}
-              className='w-full cursor-pointer py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
+              className='w-full cursor-pointer py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2'>
               {isLoading ? (
                 <span className='flex items-center justify-center'>
                   {/* <svg className='animate-spin -ml-1 mr-2 h-4 w-4 text-white' fill='none' viewBox='0 0 24 24'>

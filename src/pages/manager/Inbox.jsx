@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { useTasks } from '../context/TaskContext'
-import TaskCard from '../components/TaskCard'
+import { useTasks } from '../../context/TaskContext'
+import TaskCard from '../../components/TaskCard'
 import { MdRefresh } from 'react-icons/md'
 import { HiSortDescending } from 'react-icons/hi'
 import { LuInbox, LuTag } from 'react-icons/lu'
@@ -87,7 +87,7 @@ const Inbox = () => {
         <div className='mb-8'>
           <div className='flex items-center justify-between mb-6'>
             <div>
-              <h1 className='text-3xl font-bold text-slate-900'>Task Inbox</h1>
+              <h1 className='text-2xl font-bold text-slate-900'>Task Inbox</h1>
               {/* <p className='text-slate-600 mt-1'>
                 {processed.length} {processed.length === 1 ? 'task' : 'tasks'}
                 {activeFiltersCount > 0 && ` (${activeFiltersCount} filter${activeFiltersCount > 1 ? 's' : ''} active)`}
@@ -96,7 +96,7 @@ const Inbox = () => {
             <button
               onClick={handleRefresh}
               disabled={isRefreshing}
-              className='flex items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition-colors duration-200 disabled:opacity-50'>
+              className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition disabled:opacity-50'>
               {/* <svg
                 className={`w-4 h-4 text-slate-600 ${isRefreshing ? 'animate-spin' : ''}`}
                 fill='none'

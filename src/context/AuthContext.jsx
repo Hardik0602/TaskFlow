@@ -9,10 +9,10 @@ export const AuthProvider = ({ children }) => {
     const found = users.find(
       u => u.email === email && u.password === password
     )
-    if (!found) return false
+    if (!found) return null
     localStorage.setItem('user', JSON.stringify(found))
     setUser(found)
-    return true
+    return found
   }
   const logout = () => {
     localStorage.removeItem('user')

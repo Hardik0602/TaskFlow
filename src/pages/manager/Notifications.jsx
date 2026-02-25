@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useTasks } from '../context/TaskContext'
+import { useTasks } from '../../context/TaskContext'
 import { FaRegArrowAltCircleRight, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import { IoNotificationsOutline, IoWarning } from 'react-icons/io5'
 import { LuCalendar } from 'react-icons/lu'
@@ -76,7 +76,7 @@ const Notifications = () => {
         <div className='mb-8'>
           <div className='flex items-center justify-between'>
             <div>
-              <h1 className='text-3xl font-bold text-slate-900'>Notifications</h1>
+              <h1 className='text-2xl font-bold text-slate-900'>Notifications</h1>
               <p className='text-slate-600 mt-1'>
                 {notifications.length > 0
                   ? `${unreadCount} unread of ${notifications.length} total`

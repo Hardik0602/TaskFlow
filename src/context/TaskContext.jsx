@@ -10,7 +10,7 @@ export function TaskProvider({ children }) {
   const [notifications, setNotifications] = useState([])
   const [readIds, setReadIds] = useState(new Set())
   const loadTasks = async () => {
-    if (!user) return
+    if (!user || user.role!='manager') return
     setLoading(true)
     try {
       const res = await fetch(`http://localhost:3000/tasks?assignedTo=${user.email}`)
@@ -18,7 +18,7 @@ export function TaskProvider({ children }) {
       setTasks(data)
     } catch (error) {
       console.log(error)
-      toast.error('error fetching tasks')
+      toast.error('something went wrong')
     } finally {
       setLoading(false)
     }
