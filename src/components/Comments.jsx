@@ -76,7 +76,7 @@ const Comments = ({ taskId }) => {
       </div>
       <div className='p-4 border-t border-slate-200 bg-slate-50'>
         <div className='flex items-center gap-2'>
-          <div className='shrink-0 w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-medium text-sm'>
+          <div className=' w-8 h-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-medium text-sm'>
             {user.name.charAt(0).toUpperCase()}
           </div>
           <div className='flex-1'>
@@ -87,7 +87,7 @@ const Comments = ({ taskId }) => {
               placeholder='Write a comment...'
               rows={1}
               disabled={isSubmitting}
-              className='w-full px-3 py-2 border border-slate-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 disabled:bg-slate-100 disabled:cursor-not-allowed'
+              className='w-full px-3 py-2 border border-slate-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition disabled:bg-slate-100 disabled:cursor-not-allowed'
               style={{ minHeight: '40px', maxHeight: '120px' }}
               onInput={(e) => {
                 e.target.style.height = 'auto'
@@ -97,19 +97,12 @@ const Comments = ({ taskId }) => {
           <button
             onClick={addComment}
             disabled={!text.trim() || isSubmitting}
-            className='shrink-0 w-10 h-10 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg transition-colors duration-200 flex items-center justify-center'>
+            className=' w-10 cursor-pointer h-10 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg transition flex items-center justify-center'>
             {isSubmitting ? (
-              // <svg className='animate-spin h-4 w-4' fill='none' viewBox='0 0 24 24'>
-              //   <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle>
-              //   <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
-              // </svg>
               <FaCircleNotch
                 size={20}
                 className='animate-spin' />
             ) : (
-              // <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              //   <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 19l9 2-9-18-9 18 9-2zm0 0v-8' />
-              // </svg>
               <VscSend size={20} />
             )}
           </button>
@@ -120,10 +113,6 @@ const Comments = ({ taskId }) => {
         {loading ? (
           <div className='flex items-center justify-center py-8'>
             <div className='flex flex-col items-center gap-2'>
-              {/* <svg className='animate-spin h-8 w-8 text-slate-400' fill='none' viewBox='0 0 24 24'>
-                <circle className='opacity-25' cx='12' cy='12' r='10' stroke='currentColor' strokeWidth='4'></circle>
-                <path className='opacity-75' fill='currentColor' d='M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z'></path>
-              </svg> */}
               <FaCircleNotch
                 size={35}
                 className='animate-spin text-slate-400' />
@@ -133,9 +122,6 @@ const Comments = ({ taskId }) => {
         ) : comments.length === 0 ? (
           <div className='flex flex-col items-center justify-center py-12 text-center'>
             <div className='w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mb-3'>
-              {/* <svg className='w-6 h-6 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z' />
-              </svg> */}
               <FaRegCommentDots
                 size={25}
                 className='text-slate-400' />
@@ -151,7 +137,7 @@ const Comments = ({ taskId }) => {
                 className={`group ${index !== comments.length - 1 ? 'pb-4 border-b border-slate-100' : ''}`}>
                 <div className='flex gap-3'>
                   {/* Avatar */}
-                  <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center font-medium text-sm ${isCurrentUser
+                  <div className={` w-8 h-8 rounded-full flex items-center justify-center font-medium text-sm ${isCurrentUser
                     ? 'bg-blue-100 text-blue-700'
                     : 'bg-slate-200 text-slate-600'
                     }`}>

@@ -19,9 +19,6 @@ const TaskDetail = () => {
     return (
       <div className='min-h-screen bg-slate-50 flex items-center justify-center'>
         <div className='text-center'>
-          {/* <svg className='w-16 h-16 text-slate-300 mx-auto mb-4' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z' />
-          </svg> */}
           <IoDocumentTextOutline
             size={60}
             className='mx-auto text-slate-300' />
@@ -29,7 +26,7 @@ const TaskDetail = () => {
           <p className='text-slate-500 mb-6'>The task you're looking for doesn't exist.</p>
           <button
             onClick={() => navigate('/')}
-            className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200'>
+            className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition cursor-pointer'>
             Back to Inbox
           </button>
         </div>
@@ -128,10 +125,7 @@ const TaskDetail = () => {
         <div className='mb-6'>
           <button
             onClick={() => navigate(-1)}
-            className='inline-flex gap-1 items-center text-slate-600 hover:text-slate-900 transition-colors duration-200 mb-4'>
-            {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 19l-7-7 7-7' />
-            </svg> */}
+            className='inline-flex gap-1 items-center text-slate-600 hover:text-slate-400 transition mb-4 cursor-pointer'>
             <FaArrowLeft size={15} />
             <span className='font-medium'>Back</span>
           </button>
@@ -142,67 +136,10 @@ const TaskDetail = () => {
             <div className='bg-white rounded-lg borde border-slate-200 overflow-hidden'>
               {isOverdue && (
                 <div className='bg-red-600 text-white px-6 py-3 flex items-center gap-2'>
-                  {/* <svg className='w-5 h-5 shrink-0' fill='currentColor' viewBox='0 0 20 20'>
-                    <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z' clipRule='evenodd' />
-                  </svg> */}
                   <FaTimesCircle size={15} />
                   <span className='font-semibold'>This task is overdue and requires immediate attention</span>
                 </div>
               )}
-              {/* {isDone && (
-                <div className={`p-6 border-t ${task.status === 'approved'
-                  ? 'bg-green-50 border-green-200'
-                  : task.status === 'rejected'
-                    ? 'bg-red-50 border-red-200'
-                    : 'bg-blue-50 border-blue-200'
-                  }`}>
-                  <div className='flex items-center gap-3'>
-                    <div className={`shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${task.status === 'approved'
-                      ? 'bg-green-100'
-                      : task.status === 'rejected'
-                        ? 'bg-red-100'
-                        : 'bg-blue-100'
-                      }`}>
-                      <svg className={`w-5 h-5 ${task.status === 'approved'
-                        ? 'text-green-600'
-                        : task.status === 'rejected'
-                          ? 'text-red-600'
-                          : 'text-blue-600'
-                        }`} fill='currentColor' viewBox='0 0 20 20'>
-                        {task.status === 'approved' ? (
-                          <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z' clipRule='evenodd' />
-                        ) : task.status === 'rejected' ? (
-                          <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z' clipRule='evenodd' />
-                        ) : (
-                          <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z' clipRule='evenodd' />
-                        )}
-                      </svg>
-                    </div>
-                    <div>
-                      <p className={`text-sm font-semibold ${task.status === 'approved'
-                        ? 'text-green-900'
-                        : task.status === 'rejected'
-                          ? 'text-red-900'
-                          : 'text-blue-900'
-                        }`}>
-                        {task.status === 'approved'
-                          ? 'This task has been approved'
-                          : task.status === 'rejected'
-                            ? 'This task has been rejected'
-                            : 'This task is under review'}
-                      </p>
-                      <p className={`text-xs ${task.status === 'approved'
-                        ? 'text-green-700'
-                        : task.status === 'rejected'
-                          ? 'text-red-700'
-                          : 'text-blue-700'
-                        }`}>
-                        No further action required
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              )} */}
               <div className='p-6 border-b border-slate-200'>
                 <div className='flex items-start justify-between mb-4'>
                   <h2 className='text-2xl font-bold text-slate-900 flex-1'>{task.title}</h2>
@@ -212,7 +149,7 @@ const TaskDetail = () => {
                     </span>
                   </div>
                 </div>
-                <p className='text-slate-600 leading-relaxed'>{task.description}</p>
+                <p className='text-slate-600'>{task.description}</p>
               </div>
               <div className='p-6 grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <div>
@@ -220,9 +157,6 @@ const TaskDetail = () => {
                     Category
                   </label>
                   <div className='flex items-center gap-2'>
-                    {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z' />
-                    </svg> */}
                     <LuTag
                       size={15}
                       className='text-slate-400' />
@@ -245,9 +179,6 @@ const TaskDetail = () => {
                     Due Date
                   </label>
                   <div className='flex items-center gap-2'>
-                    {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
-                    </svg> */}
                     <LuCalendar
                       size={15}
                       className='text-slate-400' />
@@ -274,9 +205,6 @@ const TaskDetail = () => {
                     Submitted On
                   </label>
                   <div className='flex items-center gap-2'>
-                    {/* <svg className='w-4 h-4 text-slate-400' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                      <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
-                    </svg> */}
                     <LuClock4
                       size={15}
                       className='text-slate-400' />
@@ -311,10 +239,7 @@ const TaskDetail = () => {
                         setSelectedAction('approved')
                         setModalOpen(true)
                       }}
-                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors duration-200'>
-                      {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M5 13l4 4L19 7' />
-                      </svg> */}
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition'>
                       <FaRegCheckCircle
                         className='text-green-100'
                         size={20} />
@@ -325,11 +250,7 @@ const TaskDetail = () => {
                         setSelectedAction('in_progress')
                         setModalOpen(true)
                       }}
-                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200'>
-                      {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M15 12a3 3 0 11-6 0 3 3 0 016 0z' />
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z' />
-                      </svg> */}
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition'>
                       <FaEye
                         size={20}
                         className='text-blue-100' />
@@ -340,10 +261,7 @@ const TaskDetail = () => {
                         setSelectedAction('rejected')
                         setModalOpen(true)
                       }}
-                      className='flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors duration-200'>
-                      {/* <svg className='w-5 h-5' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-                        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
-                      </svg> */}
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition'>
                       <FaTimesCircle
                         size={20}
                         className='text-red-100' />

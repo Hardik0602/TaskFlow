@@ -10,17 +10,30 @@ export function TaskProvider({ children }) {
   const [notifications, setNotifications] = useState([])
   const [readIds, setReadIds] = useState(new Set())
   const loadTasks = async () => {
-    if (!user || user.role!='manager') return
+    if (!user) return
     setLoading(true)
-    try {
-      const res = await fetch(`http://localhost:3000/tasks?assignedTo=${user.email}`)
-      const data = await res.json()
-      setTasks(data)
-    } catch (error) {
-      console.log(error)
-      toast.error('something went wrong')
-    } finally {
-      setLoading(false)
+    if (user.role === 'manager') {
+      try {
+        const res = await fetch(`http://localhost:3000/tasks?assignedTo=${user.email}`)
+        const data = await res.json()
+        setTasks(data)
+      } catch (error) {
+        console.log(error)
+        toast.error('something went wrong')
+      } finally {
+        setLoading(false)
+      }
+    } else if (user.role === 'admin') {
+      try {
+        const res = await fetch('http://localhost:3000/tasks')
+        const data = await res.json()
+        setTasks(data)
+      } catch (error) {
+        console.log(error)
+        toast.error('something went wrong')
+      } finally {
+        setLoading(false)
+      }
     }
   }
   useEffect(() => {

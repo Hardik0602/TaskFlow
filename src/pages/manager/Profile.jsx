@@ -2,18 +2,16 @@ import React from 'react'
 import { useAuth } from '../../context/AuthContext'
 import { useTasks } from '../../context/TaskContext'
 const Profile = () => {
-  const role = 'Manager'
   const active = true
   const avgResTime = 2.0
   const { user } = useAuth()
   const { tasks } = useTasks()
+  const role = user.role.charAt(0).toUpperCase() + user.role.slice(1)
   const today = new Date()
   const userTasks = tasks.filter(t => t.assignedTo === user.email)
-  const pendingTasks = userTasks.filter(t => t.status === 'pending').length
+  const pendingTasks = userTasks.filter(t => t.status === 'pending' && new Date(t.dueDate) >= today).length
   const completedTasks = userTasks.filter(t => t.status !== 'pending').length
-  const overdueTasks = userTasks.filter(t =>
-    t.status === 'pending' && new Date(t.dueDate) < today
-  ).length
+  const overdueTasks = userTasks.filter(t => t.status === 'pending' && new Date(t.dueDate) < today).length
   const initials = user.name
     .split(' ')
     .map(n => n.charAt(0))
@@ -22,7 +20,7 @@ const Profile = () => {
     .slice(0, 2)
   return (
     <div className='min-h-screen bg-slate-50'>
-      <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
+      <div className='max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
         <div className='mb-8'>
           <h1 className='text-2xl font-bold text-slate-900'>Profile</h1>
           {/* <p className='text-slate-600 mt-1'>Manage your account information</p> */}
@@ -111,12 +109,6 @@ const Profile = () => {
           <div className='bg-white rounded-lg border border-slate-200 p-6'>
             <h3 className='text-sm font-semibold text-slate-900 mb-4'>Performance</h3>
             <div className='space-y-3'>
-              <div className='flex items-center justify-between'>
-                <span className='text-sm text-slate-600'>On-time completion</span>
-                <span className='text-sm font-semibold text-slate-900'>
-                  {userTasks.length > 0 ? Math.round(((completedTasks - overdueTasks) / userTasks.length) * 100) : 0}%
-                </span>
-              </div>
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-slate-600'>Average response time</span>
                 <span className='text-sm font-semibold text-slate-900'>{avgResTime} days</span>

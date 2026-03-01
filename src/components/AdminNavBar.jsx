@@ -17,13 +17,13 @@ const AdminNavBar = () => {
   }
   const currentPage = ({ isActive }) =>
     isActive
-      ? 'flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md transition-all duration-200'
-      : 'flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md transition-all duration-200'
+      ? 'flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md transition'
+      : 'flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md transition'
   return (
     <nav className='bg-white border-b border-slate-200 sticky top-0 z-10'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16'>
-          <h1 className='text-xl font-bold text-indigo-600'>TaskFlow <span className='text-xs text-indigo-700 bg-indigo-100 p-0.5 rounded'>Admin Pannel</span></h1>
+          <h1 className='text-xl font-bold text-indigo-600 cursor-not-allowed'>TaskFlow <span className='text-xs text-indigo-700 bg-indigo-100 p-0.5 rounded'>Admin Pannel</span></h1>
           <div className='hidden md:flex items-center space-x-1'>
             <NavLink to='/admin' end className={currentPage}>
               <BsBarChart size={18} />
@@ -42,7 +42,7 @@ const AdminNavBar = () => {
             <div className='relative'>
               <button
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
-                className='flex items-center space-x-2 px-3 py-2 rounded-md hover:bg-slate-50 transition-colors duration-200'>
+                className='flex cursor-pointer items-center space-x-2 px-3 py-2 rounded-md hover:bg-slate-50 transition'>
                 <div className='w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center'>
                   <span className='text-sm font-medium text-slate-600'>
                     {user?.name?.charAt(0).toUpperCase()}
@@ -50,7 +50,7 @@ const AdminNavBar = () => {
                 </div>
                 <span className='text-sm font-medium text-slate-700'>{user?.name}</span>
                 <FaCaretDown
-                  className={`text-slate-400 transition-transform duration-200 ${showProfileMenu ? 'rotate-180' : ''}`}
+                  className={`text-slate-400 transition ${showProfileMenu ? 'rotate-180' : ''}`}
                   size={18} />
               </button>
               {showProfileMenu && (
@@ -62,7 +62,7 @@ const AdminNavBar = () => {
                     <NavLink
                       to='/admin/profile'
                       onClick={() => setShowProfileMenu(false)}
-                      className='block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors duration-200'>
+                      className='block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition'>
                       <div className='flex items-center space-x-2'>
                         <IoPersonOutline size={18} />
                         <span>Profile</span>
@@ -74,7 +74,7 @@ const AdminNavBar = () => {
                         setShowProfileMenu(false)
                         handleLogout()
                       }}
-                      className='w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors duration-200'>
+                      className='w-full cursor-pointer text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition'>
                       <div className='flex items-center space-x-2'>
                         <PiSignOut size={18} />
                         <span>Sign Out</span>
@@ -88,10 +88,10 @@ const AdminNavBar = () => {
           <div className='md:hidden flex items-center'>
             <button
               onClick={() => setMobileView(!mobileView)}
-              className='p-2 rounded-md text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-colors duration-200'>
+              className='p-2 rounded-md text-slate-600'>
               <RxHamburgerMenu
                 size={20}
-                className={`transition-transform duration-200 ${mobileView ? 'rotate-90' : ''}`} />
+                className={`transition ${mobileView ? 'rotate-90' : ''}`} />
             </button>
           </div>
         </div>
@@ -124,7 +124,7 @@ const AdminNavBar = () => {
             <div className='border-t border-slate-200 my-2' />
             <NavLink
               to='/admin/profile'
-              className='flex items-center space-x-2 p-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md transition-all duration-200'
+              className='flex items-center space-x-2 p-2 text-sm font-medium text-slate-600'
               onClick={() => setMobileView(false)}>
               <div className='w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center'>
                 <span className='text-sm font-medium text-slate-600'>
@@ -138,7 +138,7 @@ const AdminNavBar = () => {
                 setMobileView(false)
                 handleLogout()
               }}
-              className='w-full flex items-center space-x-2 px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-50 rounded-md transition-all duration-200'>
+              className='w-full flex items-center space-x-2 px-4 py-2 text-sm font-medium text-red-600'>
               <PiSignOut size={18} />
               <span>Sign Out</span>
             </button>

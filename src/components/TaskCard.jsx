@@ -88,7 +88,7 @@ const TaskCard = ({ task }) => {
   return (
     <div
       onClick={() => navigate(`/task/${task.id}`)}
-      className={`bg-white border border-slate-200 rounded-lg p-5 cursor-pointer hover:shadow-md hover:border-slate-300 transition-all duration-200 ${task.overdue ? 'ring-2 ring-red-200' : ''}`}>
+      className={`bg-white border border-slate-200 rounded-lg p-5 cursor-pointer hover:shadow-md hover:border-slate-300 transition ${task.overdue ? 'ring-2 ring-red-200' : ''}`}>
       <div className='flex items-start justify-between mb-3'>
         <div className='flex-1 min-w-0 pr-4'>
           <h3 className='font-semibold text-slate-900 text-base mb-1 truncate'>
@@ -112,27 +112,18 @@ const TaskCard = ({ task }) => {
       </div>
       <div className='grid grid-cols-2 gap-x-4 gap-y-2 text-sm'>
         <div className='flex items-center gap-2'>
-          {/* <svg className='w-4 h-4 text-slate-400 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z' />
-          </svg> */}
           <LuCalendar
             className={dueDateInfo.class}
             size={15} />
           <span className={dueDateInfo.class}>{dueDateInfo.text}</span>
         </div>
         <div className='flex items-center gap-2'>
-          {/* <svg className='w-4 h-4 text-slate-400 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z' />
-          </svg> */}
           <IoPersonOutline
             className='text-slate-400'
             size={15} />
           <span className='text-slate-600 truncate'>{task.submittedBy}</span>
         </div>
         <div className='flex items-center gap-2 col-span-2'>
-          {/* <svg className='w-4 h-4 text-slate-400 shrink-0' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z' />
-          </svg> */}
           <LuClock4
             className='text-slate-400'
             size={15} />
@@ -144,9 +135,6 @@ const TaskCard = ({ task }) => {
       {task.overdue && (
         <div className='mt-3 pt-3 border-t border-red-100'>
           <div className='flex items-center gap-2 text-red-600'>
-            {/* <svg className='w-4 h-4 shrink-0' fill='currentColor' viewBox='0 0 20 20'>
-              <path fillRule='evenodd' d='M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z' clipRule='evenodd' />
-            </svg> */}
             <IoAlertCircleSharp size={18} />
             <span className='text-sm font-medium'>Action Required - This task is overdue</span>
           </div>
