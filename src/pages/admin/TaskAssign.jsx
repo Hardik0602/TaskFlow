@@ -216,10 +216,7 @@ const TaskAssign = () => {
                     <input
                       type='date'
                       value={submittedDate}
-                      onChange={e => {
-                        setSubmittedDate(e.target.value)
-                        setDueDate(e.target.value)
-                      }}
+                      onChange={e => setSubmittedDate(e.target.value)}
                       min={new Date().toISOString().split('T')[0]}
                       className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition' />
                   </div>
