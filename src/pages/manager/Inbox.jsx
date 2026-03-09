@@ -7,7 +7,7 @@ import { LuInbox, LuTag } from 'react-icons/lu'
 import { FaRegCheckCircle } from 'react-icons/fa'
 import { IoWarningOutline } from 'react-icons/io5'
 const Inbox = () => {
-  const { tasks, refreshTasks, loading } = useTasks()
+  const { tasks, loadTasks, loading } = useTasks()
   const today = new Date()
   const [sortMode, setSortMode] = useState('due')
   const [filters, setFilters] = useState({
@@ -83,7 +83,7 @@ const Inbox = () => {
               <h1 className='text-2xl font-bold text-slate-900'>Task Inbox</h1>
             </div>
             <button
-              onClick={() => refreshTasks()}
+              onClick={() => loadTasks()}
               disabled={loading}
               className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition disabled:opacity-50'>
               <MdRefresh
