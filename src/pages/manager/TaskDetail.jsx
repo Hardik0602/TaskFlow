@@ -13,7 +13,7 @@ const TaskDetail = () => {
   const [selectedAction, setSelectedAction] = useState(null)
   const { id } = useParams()
   const navigate = useNavigate()
-  const { tasks, refreshTasks } = useTasks()
+  const { tasks, loadTasks } = useTasks()
   const task = tasks.find(t => t.id === id)
   if (!task) {
     return (
@@ -60,7 +60,7 @@ const TaskDetail = () => {
           })
         })
       }
-      refreshTasks()
+      loadTasks()
       toast.success('Task Updated')
       navigate('/')
     } catch {

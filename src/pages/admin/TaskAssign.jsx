@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useAuth } from '../../context/AuthContext'
-import { users } from '../../data/users'
+import { useData } from '../../context/DataContext'
 import { FaArrowLeft, FaCaretDown, FaCircleNotch } from 'react-icons/fa'
 const CATEGORY_OPTIONS = [
   'Expense Approval',
@@ -17,6 +17,7 @@ const TaskAssign = () => {
   const { email } = useParams()
   const navigate = useNavigate()
   const { user } = useAuth()
+  const { users } = useData()
   const assignee = users.find(u => u.email === email).name
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')

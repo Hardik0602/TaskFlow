@@ -1,13 +1,12 @@
-import React, { useState } from 'react'
-import { users } from '../../data/users'
+import React from 'react'
+import { useData } from '../../context/DataContext'
 import { BsPeople, BsPersonPlus, BsClipboardPlus } from 'react-icons/bs'
 import { PiSuitcase } from 'react-icons/pi'
 import { FiShield } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 const UserManagement = () => {
+  const { totalUsers, managers, admins, filteredUsers, searchTerm, setSearchTerm } = useData()
   const navigate = useNavigate()
-  const [searchTerm, setSearchTerm] = useState('')
-  const filteredUsers = users.filter(user => user.name.toLowerCase().includes(searchTerm.toLowerCase()) || user.email.toLowerCase().includes(searchTerm.toLowerCase()))
   const getRoleBadge = (role) => {
     if (role === 'admin') {
       return (
@@ -138,7 +137,7 @@ const UserManagement = () => {
                 <BsPeople className='text-slate-500' size={20} />
                 <p className='text-sm font-medium text-slate-500'>Total Users</p>
               </div>
-              <p className='text-2xl font-bold text-slate-400'>{users.length}</p>
+              <p className='text-2xl font-bold text-slate-400'>{totalUsers}</p>
             </div>
             <div className='p-4 bg-blue-50 rounded-lg border border-blue-200'>
               <div className='flex items-center gap-2 mb-2'>
@@ -146,7 +145,7 @@ const UserManagement = () => {
                 <p className='text-sm font-medium text-blue-500'>Managers</p>
               </div>
               <p className='text-2xl font-bold text-blue-400'>
-                {users.filter(u => u.role === 'manager').length}
+                {managers}
               </p>
             </div>
             <div className='p-4 bg-purple-50 rounded-lg border border-purple-200'>
@@ -155,7 +154,7 @@ const UserManagement = () => {
                 <p className='text-sm font-medium text-purple-500'>Admins</p>
               </div>
               <p className='text-2xl font-bold text-purple-400'>
-                {users.filter(u => u.role === 'admin').length}
+                {admins}
               </p>
             </div>
           </div>

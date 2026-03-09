@@ -14,6 +14,7 @@ import AdminProfile from './pages/admin/AdminProfile'
 import ProtectedRoute from './helper/ProtectedRoute'
 import RoleProtectedRoute from './helper/RoleProtectedRoute'
 import { TaskProvider } from './context/TaskContext'
+import { DataProvider } from './context/DataContext'
 import AssignTask from './pages/admin/TaskAssign'
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -53,5 +54,5 @@ const router = createBrowserRouter(
   )
 )
 export default function App() {
-  return <TaskProvider><RouterProvider router={router} /></TaskProvider>
+  return <TaskProvider><DataProvider><RouterProvider router={router} /></DataProvider></TaskProvider>
 }

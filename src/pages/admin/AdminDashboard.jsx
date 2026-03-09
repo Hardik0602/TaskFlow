@@ -1,21 +1,16 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import { users } from '../../data/users'
 import { BsPeople } from 'react-icons/bs'
 import { IoWarningOutline } from 'react-icons/io5'
 import { LuClock4 } from 'react-icons/lu'
 import { FaRegArrowAltCircleRight } from 'react-icons/fa'
 import { MdRefresh } from 'react-icons/md'
 import { useTasks } from '../../context/TaskContext'
+import { useData } from '../../context/DataContext'
 const AdminDashboard = () => {
-  const { tasks, loading, refreshTasks } = useTasks()
+  const { loading, loadTasks } = useTasks()
+  const { totalUsers, admins, managers, overdueTasks, pendingTasks } = useData()
   const navigate = useNavigate()
-  const today = new Date()
-  const totalUsers = users.length
-  const totalManagers = users.filter(u => u.role === 'manager').length
-  const totalAdmins = users.filter(u => u.role === 'admin').length
-  const overdueTasks = tasks.filter(t => t.status === 'pending' && new Date(t.dueDate) < today).length
-  const pendingTasks = tasks.filter(t => t.status === 'pending' && new Date(t.dueDate) >= today).length
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
@@ -26,7 +21,7 @@ const AdminDashboard = () => {
               {/* <p className='text-slate-600 mt-1'>Overview of users and task load</p> */}
             </div>
             <button
-              onClick={() => refreshTasks()}
+              onClick={() => loadTasks()}
               disabled={loading}
               className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition disabled:opacity-50'>
               <MdRefresh
@@ -51,8 +46,8 @@ const AdminDashboard = () => {
             </div>
             <div className='mt-4 pt-4 border-t border-slate-200'>
               <div className='flex justify-between text-xs'>
-                <span className='text-slate-600 font-semibold'>Managers: {totalManagers}</span>
-                <span className='text-slate-600 font-semibold'>Admins: {totalAdmins}</span>
+                <span className='text-slate-600 font-semibold'>Managers: {managers}</span>
+                <span className='text-slate-600 font-semibold'>Admins: {admins}</span>
               </div>
             </div>
           </div>

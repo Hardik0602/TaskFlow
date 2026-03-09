@@ -1,27 +1,11 @@
 import React from 'react'
-import { useTasks } from '../../context/TaskContext'
+import { useData } from '../../context/DataContext'
 import { LuClipboard, LuClock4 } from 'react-icons/lu'
 import { IoWarningOutline } from 'react-icons/io5'
 import { FaRegCheckCircle } from 'react-icons/fa'
 import Stats from '../../components/Stats'
 const Reports = () => {
-  const { tasks } = useTasks()
-  const today = new Date()
-  const totalTasks = tasks.length
-  const completedTasks = tasks.filter(t => t.status !== 'pending').length
-  const pendingTasks = tasks.filter(t => t.status === 'pending' && new Date(t.dueDate) >= today).length
-  const overdueTasks = tasks.filter(t => t.status === 'pending' && new Date(t.dueDate) < today).length
-  const effectiveTasks = tasks.map(t => {
-    const isOverdue = t.status === 'pending' && new Date(t.dueDate) < today
-    return {
-      ...t,
-      effectivePriority: isOverdue ? 'high' : t.priority
-    }
-  })
-  const pendingEffectiveTasks = effectiveTasks.filter(t => t.status === 'pending')
-  const highPriority = pendingEffectiveTasks.filter(t => t.effectivePriority === 'high').length
-  const mediumPriority = pendingEffectiveTasks.filter(t => t.effectivePriority === 'medium').length
-  const lowPriority = pendingEffectiveTasks.filter(t => t.effectivePriority === 'low').length
+  const { totalTasks, completedTasks, pendingTasks, overdueTasks, lowPriority, highPriority, mediumPriority } = useData()
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>

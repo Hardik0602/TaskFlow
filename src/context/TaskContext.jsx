@@ -52,7 +52,7 @@ export function TaskProvider({ children }) {
   }
   const unreadCount = notifications.filter(n => !readIds.has(n.id)).length
   return (
-    <TaskContext.Provider value={{ tasks, loading, refreshTasks: loadTasks, notifications, unreadCount, readIds, markRead, markAllRead }}>
+    <TaskContext.Provider value={{ tasks, loading, loadTasks, notifications, unreadCount, readIds, markRead, markAllRead }}>
       {children}
     </TaskContext.Provider>
   )
