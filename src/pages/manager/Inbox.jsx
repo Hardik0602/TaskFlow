@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTasks } from '../../context/TaskContext'
+import { useData } from '../../context/DataContext'
 import TaskCard from '../../components/TaskCard'
 import { MdRefresh } from 'react-icons/md'
 import { HiSortDescending } from 'react-icons/hi'
@@ -7,65 +8,8 @@ import { LuInbox, LuTag } from 'react-icons/lu'
 import { FaRegCheckCircle } from 'react-icons/fa'
 import { IoWarningOutline } from 'react-icons/io5'
 const Inbox = () => {
-  const { tasks, loadTasks, loading } = useTasks()
-  const today = new Date()
-  const [sortMode, setSortMode] = useState('due')
-  const [filters, setFilters] = useState({
-    category: 'all',
-    status: 'all',
-    priority: 'all'
-  })
-  const markOverdue = (data) =>
-    data.map(t => {
-      const overdue = t.status === 'pending' && new Date(t.dueDate) < today
-      return {
-        ...t,
-        overdue,
-        effectivePriority: overdue ? 'high' : t.priority
-      }
-    })
-  const statusOrder = {
-    overdue: 0,
-    pending: 1,
-    in_progress: 2,
-    approved: 3,
-    rejected: 3
-  }
-  const priorityOrder = {
-    high: 0,
-    medium: 1,
-    low: 2
-  }
-  const applyFilters = (data) =>
-    data.filter(t => {
-      if (filters.category !== 'all' && t.category !== filters.category) return false
-      if (filters.status !== 'all' && t.status !== filters.status) return false
-      if (filters.priority !== 'all' && t.effectivePriority !== filters.priority) return false
-      return true
-    })
-  const sortTasks = (data) =>
-    [...data].sort((a, b) => {
-      const aStatus = a.overdue ? 'overdue' : a.status
-      const bStatus = b.overdue ? 'overdue' : b.status
-      const s = statusOrder[aStatus] - statusOrder[bStatus]
-      if (s !== 0) return s
-      if (sortMode === 'due') {
-        return new Date(a.dueDate) - new Date(b.dueDate)
-      }
-      return priorityOrder[a.effectivePriority] - priorityOrder[b.effectivePriority]
-    })
-  const processed = applyFilters(markOverdue(tasks))
-  const grouped = processed.reduce((acc, task) => {
-    if (!acc[task.category]) acc[task.category] = []
-    acc[task.category].push(task)
-    return acc
-  }, {})
-  Object.keys(grouped).forEach(category => {
-    grouped[category] = sortTasks(grouped[category])
-  })
-  const categories = [...new Set(tasks.map(t => t.category))]
-  const statuses = [...new Set(tasks.map(t => t.status))]
-  const priorities = ['high', 'medium', 'low']
+  const { loadTasks, loading } = useTasks()
+  const { sortMode, setSortMode, filters, setFilters, statuses, categories, priorities, processedTasks } = useData()
   const handleReset = () => {
     setFilters({
       category: 'all',
@@ -159,7 +103,7 @@ const Inbox = () => {
           </div>
         </div>
         <div className='space-y-8'>
-          {Object.entries(grouped).map(([category, items]) => (
+          {Object.entries(processedTasks).map(([category, items]) => (
             <div key={category}>
               <div className='flex items-center mb-4'>
                 <h2 className='text-lg font-semibold text-slate-900'>{category}</h2>
@@ -174,7 +118,7 @@ const Inbox = () => {
               </div>
             </div>
           ))}
-          {Object.keys(grouped).length === 0 && (
+          {Object.keys(processedTasks).length === 0 && (
             <div className='bg-white rounded-lg border border-slate-200 p-12 text-center'>
               <div className='max-w-sm mx-auto'>
                 <LuInbox

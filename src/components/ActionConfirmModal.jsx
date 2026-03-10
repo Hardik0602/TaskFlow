@@ -60,7 +60,7 @@ const ActionConfirmModal = ({ open, action, onCancel, onConfirm }) => {
         onClick={onCancel} />
       <div className='relative bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-slideUp'>
         <div className='p-6 pb-4'>
-          <div className='flex items-start gap-4'>
+          <div className='flex items-center gap-4'>
             <div className={` w-12 h-12 rounded-full ${config.iconBg} ${config.iconColor} flex items-center justify-center`}>
               {config.icon}
             </div>

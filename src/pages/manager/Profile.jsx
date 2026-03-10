@@ -1,17 +1,12 @@
 import React from 'react'
 import { useAuth } from '../../context/AuthContext'
-import { useTasks } from '../../context/TaskContext'
+import { useData } from '../../context/DataContext'
 const Profile = () => {
   const active = true
   const avgResTime = 2.0
   const { user } = useAuth()
-  const { tasks } = useTasks()
+  const { totalTasks, pendingTasks, completedTasks, overdueTasks } = useData()
   const role = user.role.charAt(0).toUpperCase() + user.role.slice(1)
-  const today = new Date()
-  const userTasks = tasks.filter(t => t.assignedTo === user.email)
-  const pendingTasks = userTasks.filter(t => t.status === 'pending' && new Date(t.dueDate) >= today).length
-  const completedTasks = userTasks.filter(t => t.status !== 'pending').length
-  const overdueTasks = userTasks.filter(t => t.status === 'pending' && new Date(t.dueDate) < today).length
   const initials = user.name
     .split(' ')
     .map(n => n.charAt(0))
@@ -72,7 +67,7 @@ const Profile = () => {
           <h3 className='text-lg font-semibold text-slate-900 mb-4'>Activity Overview</h3>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
             <div className='text-center p-4 bg-slate-50 rounded-lg border border-slate-200'>
-              <div className='text-2xl font-bold text-slate-900 mb-1'>{userTasks.length}</div>
+              <div className='text-2xl font-bold text-slate-900 mb-1'>{totalTasks}</div>
               <div className='text-xs text-slate-600'>Total Tasks</div>
             </div>
             <div className='text-center p-4 bg-amber-50 rounded-lg border border-amber-200'>
@@ -94,16 +89,16 @@ const Profile = () => {
             <div className='flex items-center justify-between mb-4'>
               <h3 className='text-sm font-semibold text-slate-900'>Completion Rate</h3>
               <span className='text-2xl font-bold text-blue-600'>
-                {userTasks.length > 0 ? Math.round((completedTasks / userTasks.length) * 100) : 0}%
+                {totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0}%
               </span>
             </div>
             <div className='w-full bg-slate-200 rounded-full h-2'>
               <div
                 className='bg-blue-600 h-2 rounded-full transition-all duration-500'
-                style={{ width: `${userTasks.length > 0 ? (completedTasks / userTasks.length) * 100 : 0}%` }} />
+                style={{ width: `${totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0}%` }} />
             </div>
             <p className='text-xs text-slate-500 mt-2'>
-              {completedTasks} of {userTasks.length} tasks completed
+              {completedTasks} of {totalTasks} tasks completed
             </p>
           </div>
           <div className='bg-white rounded-lg border border-slate-200 p-6'>
@@ -115,7 +110,7 @@ const Profile = () => {
               </div>
               <div className='flex items-center justify-between'>
                 <span className='text-sm text-slate-600'>Tasks this month</span>
-                <span className='text-sm font-semibold text-slate-900'>{userTasks.length}</span>
+                <span className='text-sm font-semibold text-slate-900'>{totalTasks}</span>
               </div>
             </div>
           </div>

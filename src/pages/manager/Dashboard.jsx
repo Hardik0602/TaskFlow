@@ -1,45 +1,15 @@
 import React from 'react'
 import Stats from '../../components/Stats'
-import { useTasks } from '../../context/TaskContext'
+import { useData } from '../../context/DataContext'
 import { LuCalendar, LuClipboard, LuClock4 } from 'react-icons/lu'
 import { IoWarningOutline } from 'react-icons/io5'
 import { FaRegCheckCircle } from 'react-icons/fa'
 const Dashboard = () => {
-  const { tasks } = useTasks()
-  const today = new Date()
-  const total = tasks.length
-  const overdue = tasks.filter(t =>
-    t.status === 'pending' && new Date(t.dueDate) < today
-  ).length
-  const pending = tasks.filter(t =>
-    t.status === 'pending' && new Date(t.dueDate) >= today
-  ).length
-  const completed = tasks.filter(t =>
-    t.status !== 'pending'
-  ).length
-  const weekAgo = new Date(today)
-  weekAgo.setDate(today.getDate() - 7)
-  const completedThisWeek = tasks.filter(t =>
-    t.status !== 'pending' && new Date(t.submittedDate) >= weekAgo
-  ).length
-  const effectiveTasks = tasks.map(t => {
-    const overdue = t.status === 'pending' && new Date(t.dueDate) < today
-    return {
-      ...t,
-      effectivePriority: overdue ? 'high' : t.priority
-    }
-  })
-  const pendingTasks = effectiveTasks.filter(t => t.status === 'pending')
-  const highPriority = pendingTasks.filter(t => t.effectivePriority === 'high').length
-  const mediumPriority = pendingTasks.filter(t => t.effectivePriority === 'medium').length
-  const lowPriority = pendingTasks.filter(t => t.effectivePriority === 'low').length
-  const threeDaysFromNow = new Date(today)
-  threeDaysFromNow.setDate(today.getDate() + 3)
-  const dueSoon = tasks.filter(t =>
-    t.status === 'pending' &&
-    new Date(t.dueDate) >= today &&
-    new Date(t.dueDate) <= threeDaysFromNow
-  ).length
+  const { totalTasks, overdueTasks, pendingTasks, completedTasks, highPriority, lowPriority, mediumPriority, dueSoon } = useData()
+  const total = totalTasks
+  const overdue = overdueTasks
+  const pending = pendingTasks
+  const completed = completedTasks
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
@@ -77,8 +47,7 @@ const Dashboard = () => {
             icon={
               <FaRegCheckCircle size={25} />
             }
-            color='green'
-            subtitle={`${completedThisWeek} this week`} />
+            color='green' />
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
           <div className='bg-white rounded-lg border border-slate-200 p-6'>
