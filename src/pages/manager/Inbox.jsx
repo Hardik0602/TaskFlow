@@ -119,7 +119,7 @@ const Inbox = () => {
             </div>
           ))}
           {Object.keys(processedTasks).length === 0 && (
-            <div className='bg-white rounded-lg border border-slate-200 p-12 text-center'>
+            <div className='bg-white rounded-lg border border-slate-200 p-12 text-center animate-slideUp'>
               <div className='max-w-sm mx-auto'>
                 <LuInbox
                   size={80}
