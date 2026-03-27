@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaArrowTrendDown, FaArrowTrendUp } from 'react-icons/fa6'
-const Stats = ({ title, value, icon, color, subtitle, trend }) => {
+const Stats = ({ title, value, icon, color, subtitle, trend, index = 0 }) => {
   const colorConfig = {
     blue: {
       bg: 'bg-blue-50',
@@ -33,7 +33,9 @@ const Stats = ({ title, value, icon, color, subtitle, trend }) => {
   }
   const colors = colorConfig[color] || colorConfig.blue
   return (
-    <div className={`${colors.bg} rounded-lg border ${colors.border} p-6`}>
+    <div
+      className={`${colors.bg} rounded-lg border ${colors.border} p-6 animate-slideUp`}
+      style={{ animationDelay: `${index * 75}ms`, animationFillMode: 'backwards' }}>
       <div className='flex items-center justify-between'>
         <div className='flex-1'>
           <p className='text-sm font-medium text-slate-600 mb-3'>{title}</p>

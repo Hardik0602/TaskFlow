@@ -42,7 +42,7 @@ const NavBar = () => {
               {unreadCount > 0 && (
                 <span className='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
                   <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
-                  {unreadCount}
+                  <span className='relative animate-bounce-once'>{unreadCount}</span>
                 </span>
               )}
             </NavLink>
@@ -138,7 +138,7 @@ const NavBar = () => {
               {unreadCount > 0 && (
                 <span className='relative ml-2 flex size-4 items-center justify-center text-red-400 text-sm'>
                   <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-red-300 opacity-75' />
-                  {unreadCount}
+                  <span className='relative animate-bounce-once'>{unreadCount}</span>
                 </span>
               )}
             </NavLink>

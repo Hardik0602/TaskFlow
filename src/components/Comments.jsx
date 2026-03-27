@@ -9,6 +9,7 @@ const Comments = ({ taskId }) => {
   const [text, setText] = useState('')
   const [loading, setLoading] = useState(true)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [newCommentId, setNewCommentId] = useState(null)
   const loadComments = () => {
     fetch(`http://localhost:3000/comments?taskId=${taskId}`)
       .then(res => res.json())
@@ -36,12 +37,18 @@ const Comments = ({ taskId }) => {
         })
       })
       setText('')
+      setIsSubmitting(false)
+      const res = await fetch(`http://localhost:3000/comments?taskId=${taskId}&_sort=id&_order=desc&_limit=1`)
+      const newComment = await res.json()
+      if (newComment.length > 0) {
+        setNewCommentId(newComment[0].id)
+        setTimeout(() => setNewCommentId(null), 500)
+      }
       loadComments()
       toast.success('Comment Added')
     } catch {
-      toast.error('Failed to Add Comment')
-    } finally {
       setIsSubmitting(false)
+      toast.error('Failed to Add Comment')
     }
   }
   const handleKeyPress = (e) => {
@@ -97,7 +104,7 @@ const Comments = ({ taskId }) => {
           <button
             onClick={addComment}
             disabled={!text.trim() || isSubmitting}
-            className=' w-10 cursor-pointer h-10 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg transition flex items-center justify-center'>
+            className='w-10 cursor-pointer h-10 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-150 active:scale-95 flex items-center justify-center'>
             {isSubmitting ? (
               <FaCircleNotch
                 size={20}
@@ -134,7 +141,8 @@ const Comments = ({ taskId }) => {
             return (
               <div
                 key={c.id}
-                className={`group ${index !== comments.length - 1 ? 'pb-4 border-b border-slate-100' : ''}`}>
+                className={`group animate-slideInFromBottom ${index !== comments.length - 1 ? 'pb-4 border-b border-slate-100' : ''}`}
+                style={newCommentId === c.id ? { animation: 'slideInFromBottom 0.3s ease-out' } : {}}>
                 <div className='flex gap-3'>
                   {/* Avatar */}
                   <div className={` w-8 h-8 rounded-full flex items-center justify-center font-medium text-sm ${isCurrentUser

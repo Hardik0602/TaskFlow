@@ -21,7 +21,7 @@ const Inbox = () => {
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <div className='mb-8'>
+        <div className='mb-8 animate-slideUp'>
           <div className='flex items-center justify-between mb-6'>
             <div>
               <h1 className='text-2xl font-bold text-slate-900'>Task Inbox</h1>
@@ -112,8 +112,8 @@ const Inbox = () => {
                 </span>
               </div>
               <div className='space-y-3'>
-                {items.map(t => (
-                  <TaskCard key={t.id} task={t} />
+                {items.map((t, i) => (
+                  <TaskCard key={t.id} task={t} index={i} />
                 ))}
               </div>
             </div>

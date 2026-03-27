@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoAlertCircleSharp, IoPersonOutline } from 'react-icons/io5'
 import { LuCalendar, LuClock4 } from 'react-icons/lu'
-const TaskCard = ({ task }) => {
+const TaskCard = ({ task, index = 0 }) => {
   const navigate = useNavigate()
   const priorityConfig = {
     high: {
@@ -88,7 +88,8 @@ const TaskCard = ({ task }) => {
   return (
     <div
       onClick={() => navigate(`/task/${task.id}`)}
-      className={`bg-white border border-slate-200 rounded-lg p-5 cursor-pointer hover:shadow-md hover:border-slate-300 transition ${task.overdue ? 'ring-2 ring-red-200' : ''}`}>
+      className={`bg-white border border-slate-200 rounded-lg p-5 cursor-pointer hover:shadow-md hover:border-slate-300 hover:scale-[1.01] transition-all duration-200 animate-slideInFromBottom ${task.overdue ? 'ring-2 ring-red-200' : ''}`}
+      style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'backwards' }}>
       <div className='flex items-start justify-between mb-3'>
         <div className='flex-1 min-w-0 pr-4'>
           <h3 className='font-semibold text-slate-900 text-base mb-1 truncate'>

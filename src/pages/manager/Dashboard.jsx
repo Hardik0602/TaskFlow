@@ -6,51 +6,51 @@ import { IoWarningOutline } from 'react-icons/io5'
 import { FaRegCheckCircle } from 'react-icons/fa'
 const Dashboard = () => {
   const { totalTasks, overdueTasks, pendingTasks, completedTasks, highPriority, lowPriority, mediumPriority, dueSoon } = useData()
-  const total = totalTasks
-  const overdue = overdueTasks
-  const pending = pendingTasks
-  const completed = completedTasks
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <div className='mb-8'>
+        <div className='mb-8 animate-slideUp'>
           <h1 className='text-2xl font-bold text-slate-900'>Dashboard</h1>
           {/* <p className='text-slate-600 mt-1'>Overview of your tasks and activities</p> */}
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8'>
           <Stats
             title='Total Tasks'
-            value={total}
+            value={totalTasks}
             icon={
               <LuClipboard size={25} />
             }
-            color='blue' />
-          <Stats
-            title='Pending'
-            value={pending}
-            icon={
-              <LuClock4 size={25} />
-            }
-            color='amber'
-            subtitle='Awaiting action' />
+            color='blue'
+            index={0} />
           <Stats
             title='Overdue'
-            value={overdue}
+            value={overdueTasks}
             icon={
               <IoWarningOutline size={25} />
             }
             color='red'
-            subtitle='Needs attention' />
+            subtitle='Needs attention'
+            index={1} />
+          <Stats
+            title='Pending'
+            value={pendingTasks}
+            icon={
+              <LuClock4 size={25} />
+            }
+            color='amber'
+            subtitle='Awaiting action'
+            index={2} />
           <Stats
             title='Completed'
-            value={completed}
+            value={completedTasks}
             icon={
               <FaRegCheckCircle size={25} />
             }
-            color='green' />
+            color='green'
+            index={3} />
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
+          <div className='bg-white rounded-lg border border-slate-200 p-6 animate-slideUp' style={{ animationDelay: '300ms', animationFillMode: 'backwards' }}>
             <h2 className='text-lg font-semibold text-slate-900 mb-4'>Due Task Priority Breakdown</h2>
             <div className='space-y-4'>
               <div>
@@ -63,7 +63,10 @@ const Dashboard = () => {
                 <div className='w-full bg-slate-100 rounded-full h-2'>
                   <div
                     className='bg-red-500 h-2 rounded-full transition-all duration-500'
-                    style={{ width: `${pending > 0 ? (highPriority / pending) * 100 : 0}%` }} />
+                    style={{ width: '0%' }}
+                    ref={(el) => {
+                      if (el) setTimeout(() => { el.style.width = `${pendingTasks > 0 ? (highPriority / pendingTasks) * 100 : 0}%` }, 50)
+                    }} />
                 </div>
               </div>
               <div>
@@ -76,7 +79,10 @@ const Dashboard = () => {
                 <div className='w-full bg-slate-100 rounded-full h-2'>
                   <div
                     className='bg-amber-500 h-2 rounded-full transition-all duration-500'
-                    style={{ width: `${pending > 0 ? (mediumPriority / pending) * 100 : 0}%` }} />
+                    style={{ width: '0%' }}
+                    ref={(el) => {
+                      if (el) setTimeout(() => { el.style.width = `${pendingTasks > 0 ? (mediumPriority / pendingTasks) * 100 : 0}%` }, 100)
+                    }} />
                 </div>
               </div>
               <div>
@@ -89,12 +95,15 @@ const Dashboard = () => {
                 <div className='w-full bg-slate-100 rounded-full h-2'>
                   <div
                     className='bg-blue-500 h-2 rounded-full transition-all duration-500'
-                    style={{ width: `${pending > 0 ? (lowPriority / pending) * 100 : 0}%` }} />
+                    style={{ width: '0%' }}
+                    ref={(el) => {
+                      if (el) setTimeout(() => { el.style.width = `${pendingTasks > 0 ? (lowPriority / pendingTasks) * 100 : 0}%` }, 150)
+                    }} />
                 </div>
               </div>
             </div>
           </div>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
+          <div className='bg-white rounded-lg border border-slate-200 p-6 animate-slideUp' style={{ animationDelay: '375ms', animationFillMode: 'backwards' }}>
             <h2 className='text-lg font-semibold text-slate-900 mb-4'>Quick Insights</h2>
             <div className='space-y-4'>
               <div className='flex items-center gap-3 p-3 bg-amber-50 border border-amber-200 rounded-lg'>
@@ -113,7 +122,7 @@ const Dashboard = () => {
                 <div>
                   <p className='text-sm font-semibold text-blue-900'>Completion Rate</p>
                   <p className='text-xs text-blue-700 mt-0.5'>
-                    {total > 0 ? Math.round((completed / total) * 100) : 0}% of all tasks completed
+                    {totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0}% of all tasks completed
                   </p>
                 </div>
               </div>

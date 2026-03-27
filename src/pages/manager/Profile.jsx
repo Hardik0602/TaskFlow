@@ -16,11 +16,11 @@ const Profile = () => {
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
-        <div className='mb-8'>
+        <div className='mb-8 animate-slideUp'>
           <h1 className='text-2xl font-bold text-slate-900'>Profile</h1>
           {/* <p className='text-slate-600 mt-1'>Manage your account information</p> */}
         </div>
-        <div className='bg-white rounded-lg border border-slate-200 overflow-hidden mb-6'>
+        <div className='bg-white rounded-lg border border-slate-200 overflow-hidden mb-6 animate-slideUp' style={{ animationDelay: '75ms', animationFillMode: 'backwards' }}>
           <div className='h-32 bg-linear-to-r from-blue-400 to-blue-700' />
           <div className='px-6 pb-6'>
             <div className='flex items-end -mt-16 mb-6'>
@@ -63,7 +63,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
-        <div className='bg-white rounded-lg border border-slate-200 p-6 mb-6'>
+        <div className='bg-white rounded-lg border border-slate-200 p-6 mb-6 animate-slideUp' style={{ animationDelay: '150ms', animationFillMode: 'backwards' }}>
           <h3 className='text-lg font-semibold text-slate-900 mb-4'>Activity Overview</h3>
           <div className='grid grid-cols-2 md:grid-cols-4 gap-4'>
             <div className='text-center p-4 bg-slate-50 rounded-lg border border-slate-200'>
@@ -85,7 +85,7 @@ const Profile = () => {
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
+          <div className='bg-white rounded-lg border border-slate-200 p-6 animate-slideUp' style={{ animationDelay: '225ms', animationFillMode: 'backwards' }}>
             <div className='flex items-center justify-between mb-4'>
               <h3 className='text-sm font-semibold text-slate-900'>Completion Rate</h3>
               <span className='text-2xl font-bold text-blue-600'>
@@ -95,13 +95,16 @@ const Profile = () => {
             <div className='w-full bg-slate-200 rounded-full h-2'>
               <div
                 className='bg-blue-600 h-2 rounded-full transition-all duration-500'
-                style={{ width: `${totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0}%` }} />
+                style={{ width: '0%' }}
+                ref={(el) => {
+                  if (el) setTimeout(() => { el.style.width = `${totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0}%` }, 50)
+                }} />
             </div>
             <p className='text-xs text-slate-500 mt-2'>
               {completedTasks} of {totalTasks} tasks completed
             </p>
           </div>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
+          <div className='bg-white rounded-lg border border-slate-200 p-6 animate-slideUp' style={{ animationDelay: '300ms', animationFillMode: 'backwards' }}>
             <h3 className='text-sm font-semibold text-slate-900 mb-4'>Performance</h3>
             <div className='space-y-3'>
               <div className='flex items-center justify-between'>

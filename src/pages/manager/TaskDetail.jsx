@@ -122,7 +122,7 @@ const TaskDetail = () => {
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <div className='mb-6'>
+        <div className='mb-6 animate-slideUp'>
           <button
             onClick={() => navigate(-1)}
             className='inline-flex gap-1 items-center text-slate-600 hover:text-slate-400 transition mb-4 cursor-pointer'>
@@ -132,7 +132,7 @@ const TaskDetail = () => {
           <h1 className='text-2xl font-bold text-slate-900'>Task Details</h1>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
-          <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-6 self-start'>
+          <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-6 self-start animate-slideUp'>
             <div className='bg-white rounded-lg borde border-slate-200 overflow-hidden'>
               {isOverdue && (
                 <div className='bg-red-600 text-white px-6 py-3 flex items-center gap-2'>
@@ -239,7 +239,7 @@ const TaskDetail = () => {
                         setSelectedAction('approved')
                         setModalOpen(true)
                       }}
-                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition'>
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 active:scale-[0.98] transition-all duration-150'>
                       <FaRegCheckCircle
                         className='text-green-100'
                         size={20} />
@@ -250,7 +250,7 @@ const TaskDetail = () => {
                         setSelectedAction('in_progress')
                         setModalOpen(true)
                       }}
-                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition'>
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 active:scale-[0.98] transition-all duration-150'>
                       <FaEye
                         size={20}
                         className='text-blue-100' />
@@ -261,7 +261,7 @@ const TaskDetail = () => {
                         setSelectedAction('rejected')
                         setModalOpen(true)
                       }}
-                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition'>
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 active:scale-[0.98] transition-all duration-150'>
                       <FaTimesCircle
                         size={20}
                         className='text-red-100' />
@@ -272,7 +272,7 @@ const TaskDetail = () => {
               )}
             </div>
           </div>
-          <div className='lg:col-span-1'>
+          <div className='lg:col-span-1 animate-slideUp'>
             <Comments taskId={task.id} />
           </div>
         </div>
