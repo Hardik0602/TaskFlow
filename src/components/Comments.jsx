@@ -72,7 +72,7 @@ const Comments = ({ taskId }) => {
     })
   }
   return (
-    <div className='bg-white rounded-lg border border-slate-200 flex flex-col h-full lg:top-24'>
+    <div className='bg-white rounded-lg border border-slate-200 flex flex-col lg:top-24'>
       <div className='p-4 border-b border-slate-200'>
         <div className='flex items-center justify-between'>
           <h2 className='text-lg font-semibold text-slate-900'>Comments</h2>
@@ -104,7 +104,7 @@ const Comments = ({ taskId }) => {
           <button
             onClick={addComment}
             disabled={!text.trim() || isSubmitting}
-            className='w-10 cursor-pointer h-10 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg transition-all duration-150 active:scale-95 flex items-center justify-center'>
+            className='w-10 cursor-pointer h-10 bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white rounded-lg flex items-center justify-center active:scale-[0.98] transition-all duration-150'>
             {isSubmitting ? (
               <FaCircleNotch
                 size={20}

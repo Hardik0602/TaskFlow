@@ -77,7 +77,7 @@ const Notifications = () => {
             {notifications.length > 0 && unreadCount > 0 && (
               <button
                 onClick={markAllRead}
-                className='flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm font-medium cursor-pointer'>
+                className='flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-medium cursor-pointer transition-all'>
                 <FaRegCheckCircle size={15} />
                 <span>Mark All Read</span>
               </button>

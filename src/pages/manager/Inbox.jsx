@@ -29,7 +29,7 @@ const Inbox = () => {
             <button
               onClick={() => loadTasks()}
               disabled={loading}
-              className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition disabled:opacity-50'>
+              className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 active:scale-[0.98] transition-all duration-150 disabled:opacity-50'>
               <MdRefresh
                 className={`text-slate-600 ${loading ? 'animate-spin' : ''}`}
                 size={18} />
@@ -95,7 +95,7 @@ const Inbox = () => {
               {activeFiltersCount > 0 && (
                 <button
                   onClick={handleReset}
-                  className='px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-md transition'>
+                  className='px-4 py-2 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-200 bg-slate-100 border border-slate-200 rounded-md transition-all'>
                   Reset
                 </button>
               )}

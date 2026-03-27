@@ -132,7 +132,7 @@ const TaskDetail = () => {
           <h1 className='text-2xl font-bold text-slate-900'>Task Details</h1>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
-          <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-6 self-start animate-slideUp'>
+          <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-6 self-start animate-slideUp border border-slate-200 rounded-lg'>
             <div className='bg-white rounded-lg borde border-slate-200 overflow-hidden'>
               {isOverdue && (
                 <div className='bg-red-600 text-white px-6 py-3 flex items-center gap-2'>
@@ -213,7 +213,7 @@ const TaskDetail = () => {
                 </div>
               </div>
               {task.details && Object.keys(task.details).length > 0 && (
-                <div className='p-6 bg-slate-50 border-t border-slate-200'>
+                <div className='p-6'>
                   <h3 className='text-sm font-semibold text-slate-900 uppercase tracking-wider mb-4'>
                     Additional Details
                   </h3>
@@ -232,7 +232,7 @@ const TaskDetail = () => {
                 </div>
               )}
               {!isDone && (
-                <div className='p-6 bg-slate-50 border-t border-slate-200'>
+                <div className='p-6'>
                   <div className='flex flex-col sm:flex-row gap-3'>
                     <button
                       onClick={() => {
