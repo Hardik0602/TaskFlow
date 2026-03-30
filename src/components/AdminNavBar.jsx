@@ -62,7 +62,7 @@ const AdminNavBar = () => {
                     <NavLink
                       to='/admin/profile'
                       onClick={() => setShowProfileMenu(false)}
-                      className='block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition'>
+                      className='block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 active:scale-[0.98] transition-all duration-150'>
                       <div className='flex items-center space-x-2'>
                         <IoPersonOutline size={18} />
                         <span>Profile</span>
