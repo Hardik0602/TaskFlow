@@ -17,8 +17,8 @@ const AdminNavBar = () => {
   }
   const currentPage = ({ isActive }) =>
     isActive
-      ? 'flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md transition'
-      : 'flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md transition'
+      ? 'flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md active:scale-[0.98] transition-all duration-150'
+      : 'flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md active:scale-[0.98] transition-all duration-150'
   return (
     <nav className='bg-white border-b border-slate-200 sticky top-0 z-10'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
@@ -42,7 +42,7 @@ const AdminNavBar = () => {
             <div className='relative'>
               <button
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
-                className='flex cursor-pointer items-center space-x-2 px-3 py-2 rounded-md hover:bg-slate-50 transition'>
+                className='flex cursor-pointer items-center space-x-2 px-3 py-2 rounded-md hover:bg-slate-50 active:scale-[0.98] transition-all duration-150'>
                 <div className='w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center'>
                   <span className='text-sm font-medium text-slate-600'>
                     {user?.name?.charAt(0).toUpperCase()}
@@ -74,7 +74,7 @@ const AdminNavBar = () => {
                         setShowProfileMenu(false)
                         handleLogout()
                       }}
-                      className='w-full cursor-pointer text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition'>
+                      className='w-full cursor-pointer text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 active:scale-[0.98] transition-all duration-150'>
                       <div className='flex items-center space-x-2'>
                         <PiSignOut size={18} />
                         <span>Sign Out</span>

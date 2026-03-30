@@ -9,7 +9,7 @@ const Reports = () => {
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <div className='mb-8'>
+        <div className='mb-8 animate-slideUp'>
           <h1 className='text-2xl font-bold text-slate-900'>Reports & Analytics</h1>
           {/* <p className='text-slate-600 mt-1'>Performance and task analytics</p> */}
         </div>
@@ -19,28 +19,32 @@ const Reports = () => {
             value={totalTasks}
             icon={<LuClipboard size={25} />}
             color='blue'
-            subtitle='All tasks in the system' />
+            subtitle='All tasks in the system'
+            index={0} />
           <Stats
             title='Completed'
             value={completedTasks}
             icon={<FaRegCheckCircle size={25} />}
             color='green'
-            subtitle={`Completion rate: ${totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0}%`} />
+            subtitle={`Completion rate: ${totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0}%`}
+            index={1} />
           <Stats
             title='Pending'
             value={pendingTasks}
             icon={<LuClock4 size={25} />}
             color='amber'
-            subtitle='Tasks awaiting action' />
+            subtitle='Tasks awaiting action'
+            index={2} />
           <Stats
             title='Overdue'
             value={overdueTasks}
             icon={<IoWarningOutline size={25} />}
             color='red'
-            subtitle='Pending tasks past due date' />
+            subtitle='Pending tasks past due date'
+            index={3} />
         </div>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
+          <div className='bg-white rounded-lg border border-slate-200 p-6 animate-slideUp' style={{ animationDelay: '300ms', animationFillMode: 'backwards' }}>
             <h2 className='text-lg font-semibold text-slate-900 mb-4'>Due Task Priority Breakdown</h2>
             <div className='space-y-4'>
               <div>
@@ -78,7 +82,7 @@ const Reports = () => {
               </div>
             </div>
           </div>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
+          <div className='bg-white rounded-lg border border-slate-200 p-6 animate-slideUp' style={{ animationDelay: '375ms', animationFillMode: 'backwards' }}>
             <h2 className='text-lg font-semibold text-slate-900 mb-4'>Weekly Performance</h2>
             <div className='space-y-4'>
               <div className='p-4 bg-blue-50 border border-blue-200 rounded-lg'>

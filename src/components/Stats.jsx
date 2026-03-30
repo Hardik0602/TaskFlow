@@ -29,6 +29,13 @@ const Stats = ({ title, value, icon, color, subtitle, trend, index = 0 }) => {
       iconText: 'text-amber-600',
       valuText: 'text-amber-600',
       border: 'border-amber-200'
+    },
+    purple: {
+      bg: 'bg-purple-50',
+      iconBg: 'bg-purple-100',
+      iconText: 'text-purple-600',
+      valuText: 'text-purple-600',
+      border: 'border-purple-200'
     }
   }
   const colors = colorConfig[color] || colorConfig.blue

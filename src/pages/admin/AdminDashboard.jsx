@@ -7,6 +7,7 @@ import { FaRegArrowAltCircleRight } from 'react-icons/fa'
 import { MdRefresh } from 'react-icons/md'
 import { useTasks } from '../../context/TaskContext'
 import { useData } from '../../context/DataContext'
+import Stats from '../../components/Stats'
 const AdminDashboard = () => {
   const { loading, loadTasks } = useTasks()
   const { totalUsers, admins, managers, overdueTasks, pendingTasks } = useData()
@@ -14,7 +15,7 @@ const AdminDashboard = () => {
   return (
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
-        <div className='mb-8'>
+        <div className='mb-8 animate-slideUp'>
           <div className='flex items-center justify-between'>
             <div>
               <h1 className='text-2xl font-bold text-slate-900'>Admin Dashboard</h1>
@@ -23,7 +24,7 @@ const AdminDashboard = () => {
             <button
               onClick={() => loadTasks()}
               disabled={loading}
-              className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition disabled:opacity-50'>
+              className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 disabled:opacity-50 active:scale-[0.98] transition-all duration-150'>
               <MdRefresh
                 className={`text-slate-600 ${loading ? 'animate-spin' : ''}`}
                 size={18} />
@@ -32,64 +33,30 @@ const AdminDashboard = () => {
           </div>
         </div>
         <div className='grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mb-8'>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
-            <div className='flex items-center justify-between'>
-              <div>
-                <p className='text-sm font-bold text-slate-600 mb-1'>Total Users</p>
-                <p className='text-3xl font-bold text-purple-600'>{totalUsers}</p>
-              </div>
-              <div className='w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center'>
-                <BsPeople
-                  className='text-purple-600'
-                  size={25} />
-              </div>
-            </div>
-            <div className='mt-4 pt-4 border-t border-slate-200'>
-              <div className='flex justify-between text-xs'>
-                <span className='text-slate-600 font-semibold'>Managers: {managers}</span>
-                <span className='text-slate-600 font-semibold'>Admins: {admins}</span>
-              </div>
-            </div>
-          </div>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
-            <div className='flex items-center justify-between'>
-              <div>
-                <p className='text-sm font-bold text-slate-600 mb-1'>Pending Tasks</p>
-                <p className='text-3xl font-bold text-amber-600'>
-                  {pendingTasks}
-                </p>
-              </div>
-              <div className='w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center'>
-                <LuClock4
-                  className='text-amber-600'
-                  size={25} />
-              </div>
-            </div>
-            <div className='mt-4 pt-4 border-t border-slate-200'>
-              <p className='text-xs text-slate-600 font-semibold'>Awaiting action across all users</p>
-            </div>
-          </div>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
-            <div className='flex items-center justify-between'>
-              <div>
-                <p className='text-sm font-bold text-slate-600 mb-1'>Overdue Tasks</p>
-                <p className='text-3xl font-bold text-red-600'>
-                  {overdueTasks}
-                </p>
-              </div>
-              <div className='w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center'>
-                <IoWarningOutline
-                  className='text-red-600'
-                  size={25} />
-              </div>
-            </div>
-            <div className='mt-4 pt-4 border-t border-slate-200'>
-              <p className='text-xs text-slate-600 font-semibold'>Needs attention across all users</p>
-            </div>
-          </div>
+          <Stats
+            title='Total Users'
+            value={totalUsers}
+            icon={<BsPeople size={25} />}
+            color='purple'
+            subtitle={`Managers: ${managers} | Admins: ${admins}`}
+            index={0} />
+          <Stats
+            title='Pending Tasks'
+            value={pendingTasks}
+            icon={<LuClock4 size={25} />}
+            color='amber'
+            subtitle='Awaiting action across all users'
+            index={1} />
+          <Stats
+            title='Overdue Tasks'
+            value={overdueTasks}
+            icon={<IoWarningOutline size={25} />}
+            color='red'
+            subtitle='Needs attention across all users'
+            index={2} />
         </div>
         <div className='grid grid-cols-1 gap-6'>
-          <div className='bg-white rounded-lg border border-slate-200 p-6'>
+          <div className='bg-white rounded-lg border border-slate-200 p-6 animate-slideUp' style={{ animationDelay: '300ms', animationFillMode: 'backwards' }}>
             <h2 className='text-lg font-semibold text-slate-900 mb-4'>Quick Actions</h2>
             <div className='space-y-3'>
               <button

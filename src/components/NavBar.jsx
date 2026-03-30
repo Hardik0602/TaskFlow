@@ -20,7 +20,7 @@ const NavBar = () => {
   }
   const currentPage = ({ isActive }) =>
     isActive
-      ? 'flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md transition'
+      ? 'flex items-center px-4 py-2 text-sm font-medium text-blue-600 bg-blue-50 rounded-md active:scale-[0.98] transition-all duration-150'
       : 'flex items-center px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-md active:scale-[0.98] transition-all duration-150'
   return (
     <nav className='bg-white border-b border-slate-200 sticky top-0 z-10'>
