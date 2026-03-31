@@ -18,7 +18,8 @@ const TaskAssign = () => {
   const navigate = useNavigate()
   const { user } = useAuth()
   const { users } = useData()
-  const assignee = users.find(u => u.email === email).name
+  const assigneeUser = users.find(u => u.email === email)
+  const assignee = assigneeUser?.name || ''
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [category, setCategory] = useState('')

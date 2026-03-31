@@ -4,11 +4,12 @@ import { useTasks } from '../../context/TaskContext'
 import { toast } from 'react-toastify'
 import Comments from '../../components/Comments'
 import ActionConfirmModal from '../../components/ActionConfirmModal'
-import { users } from '../../data/users'
+import { useData } from '../../context/DataContext'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { FaArrowLeft, FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import { LuCalendar, LuClock4, LuTag } from 'react-icons/lu'
 const TaskDetail = () => {
+  const { users } = useData()
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedAction, setSelectedAction] = useState(null)
   const { id } = useParams()
@@ -55,7 +56,7 @@ const TaskDetail = () => {
             taskId: id,
             userName: users.find(u => u.email === task.assignedTo)?.name,
             userEmail: task.assignedTo,
-            message: `${commentStatus} — ${note}`,
+            message: `${commentStatus} - ${note}`,
             createdAt: new Date().toISOString()
           })
         })
@@ -132,7 +133,7 @@ const TaskDetail = () => {
           <h1 className='text-2xl font-bold text-slate-900'>Task Details</h1>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
-          <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-6 self-start animate-slideUp border border-slate-200 rounded-lg'>
+          <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-20 self-start animate-slideUp border border-slate-200 rounded-lg'>
             <div className='bg-white rounded-lg borde border-slate-200 overflow-hidden'>
               {isOverdue && (
                 <div className='bg-red-600 text-white px-6 py-3 flex items-center gap-2'>
@@ -153,7 +154,7 @@ const TaskDetail = () => {
               </div>
               <div className='p-6 grid grid-cols-1 md:grid-cols-2 gap-6'>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                  <label className='text-xs font-semibold text-slate-500 tracking-wider mb-2 block'>
                     Category
                   </label>
                   <div className='flex items-center gap-2'>
@@ -164,7 +165,7 @@ const TaskDetail = () => {
                   </div>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                  <label className='text-xs font-semibold text-slate-500 tracking-wider mb-2 block'>
                     Priority
                   </label>
                   <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-md ${priority.bg} border ${priority.border}`}>
@@ -175,7 +176,7 @@ const TaskDetail = () => {
                   </div>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                  <label className='text-xs font-semibold text-slate-500 tracking-wider mb-2 block'>
                     Due Date
                   </label>
                   <div className='flex items-center gap-2'>
@@ -188,7 +189,7 @@ const TaskDetail = () => {
                   </div>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                  <label className='text-xs font-semibold text-slate-500 tracking-wider mb-2 block'>
                     Submitted By
                   </label>
                   <div className='flex items-center gap-2'>
@@ -201,7 +202,7 @@ const TaskDetail = () => {
                   </div>
                 </div>
                 <div className='md:col-span-2'>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block'>
+                  <label className='text-xs font-semibold text-slate-500 tracking-wider mb-2 block'>
                     Submitted On
                   </label>
                   <div className='flex items-center gap-2'>
@@ -214,13 +215,13 @@ const TaskDetail = () => {
               </div>
               {task.details && Object.keys(task.details).length > 0 && (
                 <div className='p-6'>
-                  <h3 className='text-sm font-semibold text-slate-900 uppercase tracking-wider mb-4'>
+                  <h3 className='text-sm font-semibold text-slate-900 tracking-wider mb-4'>
                     Additional Details
                   </h3>
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                     {Object.entries(task.details).map(([key, value]) => (
                       <div key={key} className='bg-white rounded-lg border border-slate-200 p-4'>
-                        <label className='text-xs font-medium text-slate-500 uppercase tracking-wider block mb-1'>
+                        <label className='text-xs font-medium text-slate-500 tracking-wider block mb-1'>
                           {key.replace(/([A-Z])/g, ' $1').trim()}
                         </label>
                         <span className='text-slate-900 font-medium'>
@@ -272,7 +273,7 @@ const TaskDetail = () => {
               )}
             </div>
           </div>
-          <div className='lg:col-span-1 animate-slideUp'>
+          <div className='lg:col-span-1 animate-slideUp lg:sticky lg:top-20 self-start'>
             <Comments taskId={task.id} />
           </div>
         </div>

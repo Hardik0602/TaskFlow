@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import { FaCircleNotch, FaEye, FaEyeSlash } from 'react-icons/fa'
 const Login = () => {
   const { login } = useAuth()
@@ -22,7 +21,6 @@ const Login = () => {
           navigate('/')
         }
       } else {
-        toast.error('Invalid credentials')
         setIsLoading(false)
       }
     }, 800)

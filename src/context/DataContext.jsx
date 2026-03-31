@@ -1,8 +1,20 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 import { useTasks } from './TaskContext'
-import { users } from '../data/users'
 const DataContext = createContext()
 export function DataProvider({ children }) {
+    const [users, setUsers] = useState([])
+    const getUsers = async () => {
+        try {
+            const res = await fetch('http://localhost:3000/users')
+            const data = await res.json()
+            setUsers(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    useEffect(() => {
+        getUsers()
+    }, [])
     const { tasks } = useTasks()
     const today = new Date()
     const threeDays = new Date(today)
