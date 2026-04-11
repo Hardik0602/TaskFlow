@@ -13,6 +13,9 @@ A React-based web application built to streamline how managers receive, review, 
 
 ## Screenshots
 
+<details>
+<summary>Click to view all screenshots</summary>
+
 ### Inbox
 
 <img src="./public/inbox.png" alt="inbox" width="600"/>
@@ -47,6 +50,7 @@ A React-based web application built to streamline how managers receive, review, 
 ### Users
 
 <img src="./public/users.png" alt="users" width="600"/>
+</details>
 
 ## Tech Stack
 
