@@ -50,6 +50,9 @@ A React-based web application built to streamline how managers receive, review, 
 ### Users
 
 <img src="./public/users.png" alt="users" width="600"/>
+
+### User Add
+<img src="./public/user_add.png" alt="user add" width="600"/>
 </details>
 
 ## Tech Stack
@@ -137,7 +140,7 @@ npm run dev
 
 * Summary cards for pending, completed, and overdue tasks
 * Admin view for overall stats across all managers
-* Task assignment form for admins to create and assign new tasks 
+* Task assignment and user creation forms for admins to create tasks and add new users
 
 ### UI / UX
 

@@ -70,7 +70,7 @@ const AddUser = () => {
                                         value={name}
                                         onChange={e => setName(e.target.value)}
                                         className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition-all duration-200'
-                                        placeholder='e.g., John Doe'
+                                        placeholder='User name'
                                         required />
                                 </div>
                                 <div className='mb-5'>
@@ -82,7 +82,7 @@ const AddUser = () => {
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
                                         className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition-all duration-200'
-                                        placeholder='john.doe@company.com'
+                                        placeholder='user@company.com'
                                         required />
                                 </div>
                                 <div className='mb-5'>
