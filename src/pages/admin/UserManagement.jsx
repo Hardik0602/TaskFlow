@@ -27,15 +27,17 @@ const UserManagement = () => {
     <div className='min-h-screen bg-slate-50'>
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8'>
         <div className='mb-8 animate-slideUp'>
-          <div className='flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4'>
+          <div className='flex flex-row items-center justify-between gap-4'>
             <div>
               <h1 className='text-2xl font-bold text-slate-900'>User Management</h1>
               {/* <p className='text-slate-600 mt-1'>Manage users</p> */}
             </div>
-            {/* <button className='flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg w-full sm:w-auto active:scale-[0.98] transition-all duration-150'>
+            <button
+              onClick={() => navigate(('/admin/addUser'))}
+              className='flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg w-auto active:scale-[0.98] transition-all duration-150'>
               <BsPersonPlus size={20} />
               <span>Add User</span>
-            </button> */}
+            </button>
           </div>
         </div>
         <div className='bg-white rounded-lg border border-slate-200 mb-1 animate-slideUp' style={{ animationDelay: '150ms', animationFillMode: 'backwards' }}>

@@ -16,6 +16,7 @@ import RoleProtectedRoute from './helper/RoleProtectedRoute'
 import { TaskProvider } from './context/TaskContext'
 import { DataProvider } from './context/DataContext'
 import AssignTask from './pages/admin/TaskAssign'
+import AddUser from './pages/admin/AddUser'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -49,6 +50,7 @@ const router = createBrowserRouter(
         <Route path='reports' element={<Reports />} />
         <Route path='profile' element={<AdminProfile />} />
         <Route path='assign/:email' element={<AssignTask />} />
+        <Route path='addUser' element={<AddUser />} />
       </Route>
     </>
   )

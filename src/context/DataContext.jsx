@@ -92,7 +92,7 @@ export function DataProvider({ children }) {
     const lowPriority = pendingEffectiveTasks.filter(t => t.priority === 'low').length
     const dueSoon = tasks.filter(t => t.status === 'pending' && new Date(t.dueDate) >= today && new Date(t.dueDate) <= threeDays).length
     return (
-        <DataContext.Provider value={{ effectiveTasks, users, searchTerm, filteredUsers, setSearchTerm, totalUsers, managers, admins, overdueTasks, pendingTasks, totalTasks, completedTasks, highPriority, lowPriority, mediumPriority, dueSoon, sortMode, setSortMode, filters, setFilters, statuses, categories, priorities, processedTasks }}>
+        <DataContext.Provider value={{ effectiveTasks, users, searchTerm, filteredUsers, setSearchTerm, totalUsers, managers, admins, overdueTasks, pendingTasks, totalTasks, completedTasks, highPriority, lowPriority, mediumPriority, dueSoon, sortMode, setSortMode, filters, setFilters, statuses, categories, priorities, processedTasks, getUsers }}>
             {children}
         </DataContext.Provider>
     )

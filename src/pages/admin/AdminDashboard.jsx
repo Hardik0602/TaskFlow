@@ -10,7 +10,7 @@ import { useData } from '../../context/DataContext'
 import Stats from '../../components/Stats'
 const AdminDashboard = () => {
   const { loading, loadTasks } = useTasks()
-  const { totalUsers, admins, managers, overdueTasks, pendingTasks } = useData()
+  const { totalUsers, admins, managers, overdueTasks, pendingTasks, getUsers } = useData()
   const navigate = useNavigate()
   return (
     <div className='min-h-screen bg-slate-50'>
@@ -22,7 +22,7 @@ const AdminDashboard = () => {
               {/* <p className='text-slate-600 mt-1'>Overview of users and task load</p> */}
             </div>
             <button
-              onClick={() => loadTasks()}
+              onClick={() => { loadTasks(), getUsers() }}
               disabled={loading}
               className='flex cursor-pointer disabled:cursor-not-allowed items-center space-x-2 px-4 py-2 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 disabled:opacity-50 active:scale-[0.98] transition-all duration-150'>
               <MdRefresh
