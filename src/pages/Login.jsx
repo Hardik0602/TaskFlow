@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext'
 import { useNavigate } from 'react-router-dom'
 import { FaCircleNotch, FaEye, FaEyeSlash } from 'react-icons/fa'
 const Login = () => {
-  const { login } = useAuth()
+  const { login, getUsers } = useAuth()
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -13,6 +13,7 @@ const Login = () => {
     e.preventDefault()
     setIsLoading(true)
     setTimeout(() => {
+      getUsers()
       const user = login(email, password)
       if (user) {
         if (user.role === 'admin') {

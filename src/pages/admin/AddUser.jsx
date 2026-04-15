@@ -7,7 +7,7 @@ import { PiSuitcase } from 'react-icons/pi'
 import { FiShield } from 'react-icons/fi'
 const AddUser = () => {
     const navigate = useNavigate()
-    const { getUsers } = useData()
+    const { getUsers, users } = useData()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -18,6 +18,10 @@ const AddUser = () => {
         e.preventDefault()
         if (!name.trim() || !email.trim() || !password.trim()) {
             toast.error('fill all required fields')
+            return
+        }
+        if (users.find(u => u.email === email)) {
+            toast.error('email already exists')
             return
         }
         const newUser = {

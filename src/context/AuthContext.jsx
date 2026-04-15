@@ -12,9 +12,6 @@ export const AuthProvider = ({ children }) => {
       console.log(error)
     }
   }
-  useEffect(() => {
-    getUsers()
-  }, [])
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem('user'))
   )
@@ -39,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     setUser(null)
   }
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout, getUsers }}>
       {children}
     </AuthContext.Provider>
   )
