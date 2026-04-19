@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { useAuth } from '../../context/AuthContext'
 import { useData } from '../../context/DataContext'
 import { FaArrowLeft, FaCaretDown, FaCircleNotch } from 'react-icons/fa'
+import { useTasks } from '../../context/TaskContext'
 const CATEGORY_OPTIONS = [
   'Expense Approval',
   'Document Review',
@@ -14,6 +15,7 @@ const CATEGORY_OPTIONS = [
 ]
 const PRIORITY_OPTIONS = ['low', 'medium', 'high']
 const TaskAssign = () => {
+  const { loadTasks } = useTasks()
   const { email } = useParams()
   const navigate = useNavigate()
   const { user } = useAuth()
@@ -86,6 +88,7 @@ const TaskAssign = () => {
       })
       if (!res.ok) throw new Error()
       toast.success('assigned successfully')
+      loadTasks()
       navigate('/admin/users')
     } catch {
       toast.error('something went wrong')

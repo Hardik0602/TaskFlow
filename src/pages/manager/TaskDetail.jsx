@@ -8,7 +8,9 @@ import { useData } from '../../context/DataContext'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { FaArrowLeft, FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import { LuCalendar, LuClock4, LuTag } from 'react-icons/lu'
+import { useAuth } from '../../context/AuthContext'
 const TaskDetail = () => {
+  const { user } = useAuth()
   const { users } = useData()
   const [modalOpen, setModalOpen] = useState(false)
   const [selectedAction, setSelectedAction] = useState(null)
@@ -130,7 +132,7 @@ const TaskDetail = () => {
             <FaArrowLeft size={15} />
             <span className='font-medium'>Back</span>
           </button>
-          <h1 className='text-2xl font-bold text-slate-900'>Task Details</h1>
+          <h1 className='text-2xl font-bold text-slate-900'>Task Details <span className={`${user.role === 'admin' ? 'text-sm text-indigo-700 bg-indigo-100 p-0.5 rounded' : 'hidden'}`}>View Only</span></h1>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
           <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-20 self-start animate-slideUp border border-slate-200 rounded-lg'>
@@ -232,7 +234,7 @@ const TaskDetail = () => {
                   </div>
                 </div>
               )}
-              {!isDone && (
+              {(user.role === 'manager' && !isDone) && (
                 <div className='p-6'>
                   <div className='flex flex-col sm:flex-row gap-3'>
                     <button

@@ -144,7 +144,6 @@ const Comments = ({ taskId }) => {
                 className={`group animate-slideInFromBottom ${index !== comments.length - 1 ? 'pb-4 border-b border-slate-100' : ''}`}
                 style={newCommentId === c.id ? { animation: 'slideInFromBottom 0.3s ease-out' } : {}}>
                 <div className='flex gap-3'>
-                  {/* Avatar */}
                   <div className={` w-8 h-8 rounded-full flex items-center justify-center font-medium text-sm ${isCurrentUser
                     ? 'bg-blue-100 text-blue-700'
                     : 'bg-slate-200 text-slate-600'

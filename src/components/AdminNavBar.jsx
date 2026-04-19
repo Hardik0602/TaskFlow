@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
 import { BsBarChart, BsPeople, BsFileText } from 'react-icons/bs'
+import { LuClipboard } from 'react-icons/lu'
 import { IoPersonOutline } from 'react-icons/io5'
 import { FaCaretDown } from 'react-icons/fa'
 import { PiSignOut } from 'react-icons/pi'
@@ -36,6 +37,10 @@ const AdminNavBar = () => {
             <NavLink to='/admin/reports' className={currentPage}>
               <BsFileText size={18} />
               <span className='ml-2'>Reports</span>
+            </NavLink>
+            <NavLink to='/admin/task' className={currentPage}>
+              <LuClipboard size={18} />
+              <span className='ml-2'>Tasks</span>
             </NavLink>
           </div>
           <div className='hidden md:flex items-center space-x-3'>
@@ -120,6 +125,13 @@ const AdminNavBar = () => {
               onClick={() => setMobileView(false)}>
               <BsFileText size={18} />
               <span className='ml-2'>Reports</span>
+            </NavLink>
+            <NavLink
+              to='/admin/task'
+              className={currentPage}
+              onClick={() => setMobileView(false)}>
+              <LuClipboard size={18} />
+              <span className='ml-2'>Tasks</span>
             </NavLink>
             <div className='border-t border-slate-200 my-2' />
             <NavLink

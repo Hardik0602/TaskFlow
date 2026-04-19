@@ -2,7 +2,12 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { IoAlertCircleSharp, IoPersonOutline } from 'react-icons/io5'
 import { LuCalendar, LuClock4 } from 'react-icons/lu'
-const TaskCard = ({ task, index = 0 }) => {
+import { PiSuitcase } from 'react-icons/pi'
+import { useData } from '../context/DataContext'
+import { useAuth } from '../context/AuthContext'
+const TaskCard = ({ task, index = 0, basePath = '' }) => {
+  const { users } = useData()
+  const { user } = useAuth()
   const navigate = useNavigate()
   const priorityConfig = {
     high: {
@@ -87,7 +92,7 @@ const TaskCard = ({ task, index = 0 }) => {
   const dueDateInfo = getDueDateDisplay()
   return (
     <div
-      onClick={() => navigate(`/task/${task.id}`)}
+      onClick={() => navigate(`${basePath}/task/${task.id}`)}
       className={`bg-white border border-slate-200 rounded-lg p-5 cursor-pointer hover:shadow-md hover:border-slate-300 hover:scale-[1.01] transition-all duration-200 animate-slideInFromBottom ${task.overdue ? 'ring-2 ring-red-200' : ''}`}
       style={{ animationDelay: `${index * 50}ms`, animationFillMode: 'backwards' }}>
       <div className='flex items-start justify-between mb-3'>
@@ -124,13 +129,19 @@ const TaskCard = ({ task, index = 0 }) => {
             size={15} />
           <span className='text-slate-600 truncate'>{task.submittedBy}</span>
         </div>
-        <div className='flex items-center gap-2 col-span-2'>
+        <div className='flex items-center gap-2'>
           <LuClock4
             className='text-slate-400'
             size={15} />
           <span className='text-slate-500'>
             Submitted on {formatDate(task.submittedDate)}
           </span>
+        </div>
+        <div className={`${user.role === 'admin' ? 'flex items-center gap-2' : 'hidden'}`}>
+          <PiSuitcase
+            className='text-slate-400'
+            size={15} />
+          <span className='text-slate-600 truncate'>{users.find(u => u.email === task.assignedTo).name}</span>
         </div>
       </div>
       {task.overdue && (

@@ -40,7 +40,8 @@ export function DataProvider({ children }) {
     const [filters, setFilters] = useState({
         category: 'all',
         status: 'all',
-        priority: 'all'
+        priority: 'all',
+        assignedTo: 'all'
     })
     const statusOrder = {
         overdue: 0,
@@ -59,6 +60,7 @@ export function DataProvider({ children }) {
             if (filters.category !== 'all' && t.category !== filters.category) return false
             if (filters.status !== 'all' && t.status !== filters.status) return false
             if (filters.priority !== 'all' && t.priority !== filters.priority) return false
+            if (filters.assignedTo !== 'all' && t.assignedTo !== filters.assignedTo) return false
             return true
         })
     )
@@ -83,6 +85,7 @@ export function DataProvider({ children }) {
     Object.keys(processedTasks).forEach(category => {
         processedTasks[category] = sortTasks(processedTasks[category])
     })
+    const assignedToList = users.filter(u => u.role === 'manager').map(u => ({ name: u.name, email: u.email }))
     const categories = [...new Set(effectiveTasks.map(t => t.category))]
     const statuses = [...new Set(effectiveTasks.map(t => t.status))]
     const priorities = ['high', 'medium', 'low']
@@ -92,7 +95,7 @@ export function DataProvider({ children }) {
     const lowPriority = pendingEffectiveTasks.filter(t => t.priority === 'low').length
     const dueSoon = tasks.filter(t => t.status === 'pending' && new Date(t.dueDate) >= today && new Date(t.dueDate) <= threeDays).length
     return (
-        <DataContext.Provider value={{ effectiveTasks, users, searchTerm, filteredUsers, setSearchTerm, totalUsers, managers, admins, overdueTasks, pendingTasks, totalTasks, completedTasks, highPriority, lowPriority, mediumPriority, dueSoon, sortMode, setSortMode, filters, setFilters, statuses, categories, priorities, processedTasks, getUsers }}>
+        <DataContext.Provider value={{ effectiveTasks, users, searchTerm, filteredUsers, setSearchTerm, totalUsers, managers, admins, overdueTasks, pendingTasks, totalTasks, completedTasks, highPriority, lowPriority, mediumPriority, dueSoon, sortMode, setSortMode, filters, setFilters, statuses, categories, priorities, processedTasks, getUsers, assignedToList }}>
             {children}
         </DataContext.Provider>
     )
