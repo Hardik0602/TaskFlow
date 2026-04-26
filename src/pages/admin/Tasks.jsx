@@ -133,7 +133,7 @@ const Tasks = () => {
                 <p className='text-slate-500 mb-6'>
                   {activeFiltersCount > 0
                     ? 'Try adjusting your filters to see more tasks.'
-                    : 'Your inbox is empty. New tasks will appear here.'}
+                    : 'System inbox is empty. New tasks will appear here.'}
                 </p>
                 {activeFiltersCount > 0 && (
                   <button

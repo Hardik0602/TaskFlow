@@ -33,25 +33,25 @@ const Profile = () => {
             <div className='space-y-6'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pt-4'>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Full Name
                   </label>
                   <p className='text-slate-900 font-medium'>{user.name}</p>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Email Address
                   </label>
                   <p className='text-slate-900 font-medium'>{user.email}</p>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Role
                   </label>
                   <p className='text-slate-900 font-medium'>{role}</p>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Account Status
                   </label>
                   <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium ${active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>

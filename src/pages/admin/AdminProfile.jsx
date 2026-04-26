@@ -30,25 +30,25 @@ const AdminProfile = () => {
             <div className='space-y-6'>
               <div className='grid grid-cols-1 md:grid-cols-2 gap-4 pt-4'>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Full Name
                   </label>
                   <p className='text-slate-900 font-medium'>{user.name}</p>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Email Address
                   </label>
                   <p className='text-slate-900 font-medium'>{user.email}</p>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Role
                   </label>
                   <p className='text-slate-900 font-medium'>{role}</p>
                 </div>
                 <div>
-                  <label className='text-xs font-semibold text-slate-500 uppercase tracking-wider block mb-1'>
+                  <label className='text-xs font-bold text-slate-500 tracking-wider block mb-1'>
                     Account Status
                   </label>
                   <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium ${active ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
@@ -64,16 +64,25 @@ const AdminProfile = () => {
           <h3 className='text-lg font-semibold text-slate-900 mb-4'>Admin Privileges</h3>
           <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
             <div className='p-4 bg-blue-50 border border-blue-200 rounded-lg'>
-              <p className='text-sm font-semibold text-blue-900 mb-1'>User Management</p>
-              <p className='text-xs text-blue-700'>Full access to manage system users</p>
+              <p className='text-sm font-bold text-center text-blue-900 mb-1'>User Management</p>
+              <p className='text-xs font-medium text-blue-700 text-justify'>
+                Full oversight of all users across the platform, including administrators and managers. Supports creating new user accounts with assigned roles, searching
+                and filtering user records, and accessing detailed user analytics and performance insights.
+              </p>
             </div>
             <div className='p-4 bg-blue-50 border border-blue-200 rounded-lg'>
-              <p className='text-sm font-semibold text-blue-900 mb-1'>Reports & Analytics</p>
-              <p className='text-xs text-blue-700'>Access to all system reports</p>
+              <p className='text-sm font-bold text-center text-blue-900 mb-1'>Task Management</p>
+              <p className='text-xs font-medium text-blue-700 text-justify'>
+                Complete visibility into all tasks within the system. Enables task creation and assignment to managers, with advanced filtering and sorting by assignee,
+                category, status, or priority. Each task includes detailed assignee information for clear tracking.
+              </p>
             </div>
             <div className='p-4 bg-blue-50 border border-blue-200 rounded-lg'>
-              <p className='text-sm font-semibold text-blue-900 mb-1'>Task Management</p>
-              <p className='text-xs text-blue-700'>Access to assign tasks to system users</p>
+              <p className='text-sm font-bold text-center text-blue-900 mb-1'>Reports & Analytics</p>
+              <p className='text-xs font-medium text-blue-700 text-justify'>
+                Comprehensive reporting across the system, including total, completed, pending, and overdue tasks. Displays completion rates, priority distribution, and
+                weekly performance trends to support data-driven decisions.
+              </p>
             </div>
           </div>
         </div>
