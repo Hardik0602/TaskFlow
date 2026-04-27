@@ -18,6 +18,7 @@ import { DataProvider } from './context/DataContext'
 import AssignTask from './pages/admin/TaskAssign'
 import AddUser from './pages/admin/AddUser'
 import AdminTasks from './pages/admin/Tasks'
+import EditTask from './pages/admin/EditTask'
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
@@ -54,6 +55,7 @@ const router = createBrowserRouter(
         <Route path='addUser' element={<AddUser />} />
         <Route path='task' element={<AdminTasks />} />
         <Route path='task/:id' element={<TaskDetail />} />
+        <Route path='edit/:id' element={<EditTask />} />
       </Route>
     </>
   )

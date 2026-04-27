@@ -132,7 +132,7 @@ const TaskDetail = () => {
             <FaArrowLeft size={15} />
             <span className='font-medium'>Back</span>
           </button>
-          <h1 className='text-2xl font-bold text-slate-900'>Task Details <span className={`${user.role === 'admin' ? 'text-sm text-indigo-700 bg-indigo-100 p-0.5 rounded' : 'hidden'}`}>View Only</span></h1>
+          <h1 className='text-2xl font-bold text-slate-900'>Task Details <span className={`${user.role === 'admin' ? 'text-sm text-indigo-700 bg-indigo-100 p-0.5 rounded' : 'hidden'}`}>Admin View</span></h1>
         </div>
         <div className='grid grid-cols-1 lg:grid-cols-3 gap-6'>
           <div className='lg:col-span-2 space-y-6 lg:sticky lg:top-20 self-start animate-slideUp border border-slate-200 rounded-lg'>
@@ -269,6 +269,20 @@ const TaskDetail = () => {
                         size={20}
                         className='text-red-100' />
                       <span>Reject</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+              {(user.role === 'admin' && !isDone) && (
+                <div className='p-6'>
+                  <div className='flex'>
+                    <button
+                      onClick={() => navigate(`/admin/edit/${id}`)}
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-indigo-100 font-semibold rounded-lg hover:bg-indigo-700 active:scale-[0.98] transition-all duration-150'>
+                      <FaEye
+                        size={20}
+                        className='text-blue-100' />
+                      <span>Edit Task</span>
                     </button>
                   </div>
                 </div>
