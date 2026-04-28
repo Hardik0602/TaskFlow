@@ -4,25 +4,29 @@
       "email": "john.doe@company.com",
       "password": "password123",
       "name": "John Doe",
-      "role": "manager"
+      "role": "manager",
+      "id": "7fbe"
     },
     {
       "email": "jane.smith@company.com",
       "password": "password123",
       "name": "Jane Smith",
-      "role": "manager"
+      "role": "manager",
+      "id": "9ba4"
     },
     {
       "email": "admin@company.com",
       "password": "password123",
       "name": "Company Admin",
-      "role": "admin"
+      "role": "admin",
+      "id": "5b40"
     },
     {
       "email": "adminJr@company.com",
       "password": "password123",
       "name": "Jr Admin",
-      "role": "admin"
+      "role": "admin",
+      "id": "3ed7"
     }
   ],
   "tasks": [
@@ -38,7 +42,7 @@
       "submittedDate": "2025-01-05",
       "dueDate": "2025-01-07",
       "details": {
-        "amount": 14500,
+        "amount": "14500",
         "currency": "INR",
         "purpose": "Client Engagement",
         "dates": "Jan 03-04, 2025"
@@ -56,7 +60,7 @@
       "submittedDate": "2025-02-01",
       "dueDate": "2025-02-04",
       "details": {
-        "amount": 1800,
+        "amount": "1800",
         "currency": "INR",
         "purpose": "Late Night Commute",
         "dates": "Jan 31, 2025"
@@ -87,7 +91,7 @@
       "submittedDate": "2027-04-08",
       "dueDate": "2027-04-14",
       "details": {
-        "amount": 21000,
+        "amount": "21000",
         "currency": "INR",
         "purpose": "Strategy Workshop",
         "dates": "Apr 05-07, 2027"
@@ -105,7 +109,7 @@
       "submittedDate": "2027-05-01",
       "dueDate": "2027-05-06",
       "details": {
-        "amount": 3200,
+        "amount": "3200",
         "currency": "INR",
         "purpose": "Field Research",
         "dates": "Apr 28-30, 2027"
@@ -123,7 +127,7 @@
       "submittedDate": "2025-01-10",
       "dueDate": "2025-01-12",
       "details": {
-        "pages": 14,
+        "pages": "14",
         "type": "Quarterly Report",
         "department": "Sales"
       }
@@ -140,7 +144,7 @@
       "submittedDate": "2025-02-05",
       "dueDate": "2025-02-07",
       "details": {
-        "pages": 9,
+        "pages": "9",
         "type": "Project Proposal",
         "department": "Marketing"
       }
@@ -157,7 +161,7 @@
       "submittedDate": "2027-03-03",
       "dueDate": "2027-03-10",
       "details": {
-        "pages": 28,
+        "pages": "28",
         "type": "Presentation",
         "department": "Corporate Strategy"
       }
@@ -174,7 +178,7 @@
       "submittedDate": "2027-05-02",
       "dueDate": "2027-05-09",
       "details": {
-        "pages": 22,
+        "pages": "22",
         "type": "Policy Manual",
         "department": "Human Resources"
       }
@@ -191,7 +195,7 @@
       "submittedDate": "2027-06-12",
       "dueDate": "2027-06-20",
       "details": {
-        "pages": 7,
+        "pages": "7",
         "type": "Checklist",
         "department": "Legal"
       }
@@ -208,7 +212,7 @@
       "submittedDate": "2025-01-02",
       "dueDate": "2025-01-02",
       "details": {
-        "days": 1,
+        "days": "1",
         "reason": "Medical",
         "dates": "Jan 02, 2025"
       }
@@ -225,7 +229,7 @@
       "submittedDate": "2025-02-01",
       "dueDate": "2025-02-03",
       "details": {
-        "days": 2,
+        "days": "2",
         "reason": "Personal",
         "dates": "Feb 02-03, 2025"
       }
@@ -242,7 +246,7 @@
       "submittedDate": "2027-03-14",
       "dueDate": "2027-03-20",
       "details": {
-        "days": 5,
+        "days": "5",
         "reason": "Travel",
         "dates": "Mar 15-19, 2027"
       }
@@ -259,7 +263,7 @@
       "submittedDate": "2027-05-04",
       "dueDate": "2027-05-07",
       "details": {
-        "days": 3,
+        "days": "3",
         "reason": "Family Wedding",
         "dates": "May 05-07, 2027"
       }
@@ -276,7 +280,7 @@
       "submittedDate": "2027-06-10",
       "dueDate": "2027-06-11",
       "details": {
-        "days": 1,
+        "days": "1",
         "reason": "Home Maintenance",
         "dates": "Jun 10, 2027"
       }
@@ -293,7 +297,7 @@
       "submittedDate": "2025-01-06",
       "dueDate": "2025-01-07",
       "details": {
-        "amount": 85000,
+        "amount": "85000",
         "currency": "INR",
         "vendor": "NetSolutions Ltd"
       }
@@ -310,9 +314,9 @@
       "submittedDate": "2025-02-02",
       "dueDate": "2025-02-04",
       "details": {
-        "amount": 6400,
+        "amount": "6400",
         "currency": "INR",
-        "count": 5
+        "count": "5"
       }
     },
     {
@@ -327,7 +331,7 @@
       "submittedDate": "2027-04-01",
       "dueDate": "2027-04-08",
       "details": {
-        "amount": 500000,
+        "amount": "500000",
         "currency": "INR",
         "quarter": "Q2-2027"
       }
@@ -360,7 +364,7 @@
       "submittedDate": "2027-06-20",
       "dueDate": "2027-06-25",
       "details": {
-        "amount": 12000,
+        "amount": "12000",
         "currency": "INR",
         "location": "Main Office"
       }

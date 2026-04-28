@@ -6,7 +6,7 @@ import Comments from '../../components/Comments'
 import ActionConfirmModal from '../../components/ActionConfirmModal'
 import { useData } from '../../context/DataContext'
 import { IoDocumentTextOutline } from 'react-icons/io5'
-import { FaArrowLeft, FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import { FaArrowLeft, FaEdit, FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
 import { LuCalendar, LuClock4, LuTag } from 'react-icons/lu'
 import { useAuth } from '../../context/AuthContext'
 const TaskDetail = () => {
@@ -203,7 +203,7 @@ const TaskDetail = () => {
                     <span className='text-slate-900 font-medium'>{task.submittedBy}</span>
                   </div>
                 </div>
-                <div className='md:col-span-2'>
+                <div>
                   <label className='text-xs font-semibold text-slate-500 tracking-wider mb-2 block'>
                     Submitted On
                   </label>
@@ -214,6 +214,19 @@ const TaskDetail = () => {
                     <span className='text-slate-600'>{formatDate(task.submittedDate)}</span>
                   </div>
                 </div>
+                {user.role === 'admin' && <div>
+                  <label className='text-xs font-semibold text-slate-500 tracking-wider mb-2 block'>
+                    Assigned To
+                  </label>
+                  <div className='flex items-center gap-2'>
+                    <div className='w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center'>
+                      <span className='text-xs font-medium text-slate-600'>
+                        {task.assignedTo.charAt(0).toUpperCase()}
+                      </span>
+                    </div>
+                    <span className='text-slate-900 font-medium'>{users.find(u => u.email === task.assignedTo)?.name}</span>
+                  </div>
+                </div>}
               </div>
               {task.details && Object.keys(task.details).length > 0 && (
                 <div className='p-6'>
@@ -279,9 +292,9 @@ const TaskDetail = () => {
                     <button
                       onClick={() => navigate(`/admin/edit/${id}`)}
                       className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-indigo-100 font-semibold rounded-lg hover:bg-indigo-700 active:scale-[0.98] transition-all duration-150'>
-                      <FaEye
+                      <FaEdit
                         size={20}
-                        className='text-blue-100' />
+                        className='text-indigo-100' />
                       <span>Edit Task</span>
                     </button>
                   </div>
