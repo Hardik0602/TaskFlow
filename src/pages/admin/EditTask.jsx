@@ -45,7 +45,7 @@ const EditTask = () => {
         currentDetails[row.key.trim()] = row.value.trim()
       }
     })
-    const originalDetails = task.details || {}
+    const originalDetails = task.details
     const changed =
       description !== (task.description) ||
       priority !== (task.priority) ||

@@ -2,14 +2,14 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
-  const [users, setUsers] = useState([])
   const getUsers = async () => {
     try {
       const res = await fetch('http://localhost:3000/users')
       const data = await res.json()
-      setUsers(data)
+      return data
     } catch (error) {
       console.log(error)
+      return []
     }
   }
   const [user, setUser] = useState(() => {
@@ -18,7 +18,7 @@ export const AuthProvider = ({ children }) => {
       sessionStorage.getItem('user')
     return savedUser ? JSON.parse(savedUser) : null
   })
-  const login = (email, password, keepSignedIn) => {
+  const login = (email, password, keepSignedIn, users) => {
     if (users.length === 0) {
       toast.error('Something went wrong')
       return null

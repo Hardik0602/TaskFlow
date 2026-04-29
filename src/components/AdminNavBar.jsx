@@ -25,7 +25,7 @@ const AdminNavBar = () => {
       <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <div className='flex items-center justify-between h-16'>
           <h1 className='text-xl font-bold text-indigo-600 cursor-not-allowed'>TaskFlow <span className='text-xs text-indigo-700 bg-indigo-100 p-0.5 rounded'>Admin Pannel</span></h1>
-          <div className='hidden md:flex items-center space-x-1'>
+          <div className='hidden lg:flex items-center space-x-1'>
             <NavLink to='/admin' end className={currentPage}>
               <BsBarChart size={18} />
               <span className='ml-2'>Dashboard</span>
@@ -43,7 +43,7 @@ const AdminNavBar = () => {
               <span className='ml-2'>Tasks</span>
             </NavLink>
           </div>
-          <div className='hidden md:flex items-center space-x-3'>
+          <div className='hidden lg:flex items-center space-x-3'>
             <div className='relative'>
               <button
                 onClick={() => setShowProfileMenu(!showProfileMenu)}
@@ -90,7 +90,7 @@ const AdminNavBar = () => {
               )}
             </div>
           </div>
-          <div className='md:hidden flex items-center'>
+          <div className='lg:hidden flex items-center'>
             <button
               onClick={() => setMobileView(!mobileView)}
               className='p-2 rounded-md text-slate-600'>
@@ -102,7 +102,7 @@ const AdminNavBar = () => {
         </div>
       </div>
       {mobileView && (
-        <div className='md:hidden border-t border-slate-200 bg-white'>
+        <div className='lg:hidden border-t border-slate-200 bg-white'>
           <div className='px-4 py-3 space-y-1'>
             <NavLink
               to='/admin'

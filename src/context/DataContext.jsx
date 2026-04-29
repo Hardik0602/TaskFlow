@@ -86,9 +86,16 @@ export function DataProvider({ children }) {
         processedTasks[category] = sortTasks(processedTasks[category])
     })
     const assignedToList = users.filter(u => u.role === 'manager').map(u => ({ name: u.name, email: u.email }))
-    const categories = [...new Set(effectiveTasks.map(t => t.category))]
+    const categories = [
+        'Expense Approval',
+        'Document Review',
+        'Leave Request',
+        'Finance',
+        'Access Request',
+        'IT Support'
+    ]
     const statuses = [...new Set(effectiveTasks.map(t => t.status))]
-    const priorities = ['high', 'medium', 'low']
+    const priorities = ['low', 'medium', 'high']
     const pendingEffectiveTasks = effectiveTasks.filter(t => t.status === 'pending')
     const highPriority = pendingEffectiveTasks.filter(t => t.priority === 'high').length
     const mediumPriority = pendingEffectiveTasks.filter(t => t.priority === 'medium').length

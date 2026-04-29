@@ -13,14 +13,14 @@ const Login = () => {
   const handle = async (e) => {
     e.preventDefault()
     setIsLoading(true)
-    getUsers()
+    const users = await getUsers()
     setTimeout(() => {
-      const user = login(email, password, keepSignedIn)
+      const user = login(email, password, keepSignedIn, users)
       if (user) {
         if (user.role === 'admin') {
-          navigate('/admin')
+          navigate('/admin', { replace: true })
         } else {
-          navigate('/')
+          navigate('/', { replace: true })
         }
       } else {
         setIsLoading(false)

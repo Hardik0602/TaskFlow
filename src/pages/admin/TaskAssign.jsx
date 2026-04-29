@@ -27,7 +27,7 @@ const TaskAssign = () => {
   const [category, setCategory] = useState('')
   const [priority, setPriority] = useState('low')
   const [submittedBy, setSubmittedBy] = useState(user?.name)
-  const [submittedDate, setSubmittedDate] = useState(new Date().toISOString().slice(0, 10))
+  const [submittedDate, setSubmittedDate] = useState('')
   const [dueDate, setDueDate] = useState('')
   const [detailsRows, setDetailsRows] = useState([{ key: '', value: '' }])
   const [submitting, setSubmitting] = useState(false)
@@ -47,7 +47,7 @@ const TaskAssign = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!title.trim() || !description.trim() || !category || !priority || !dueDate) {
-      toast.error('fill all required fields')
+      toast.error('Fill all required fields')
       return
     }
     let isValid = true
@@ -63,7 +63,7 @@ const TaskAssign = () => {
       }
     })
     if (!isValid) {
-      toast.error('additional detail must have both field name and value')
+      toast.error('Additional detail must have both field name and value')
       return
     }
     const newTask = {
@@ -89,7 +89,7 @@ const TaskAssign = () => {
       if (!res.ok) throw new Error()
       toast.success('Task assigned')
       loadTasks()
-      navigate('/admin/users')
+      navigate('/admin/users', { replace: true })
     } catch {
       toast.error('Something went wrong')
     } finally {
@@ -161,9 +161,7 @@ const TaskAssign = () => {
                       <select
                         value={category}
                         onChange={e => setCategory(e.target.value)}
-                        className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none cursor-pointer transition'
-                        required>
-                        <option value=''>Select a category</option>
+                        className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none cursor-pointer transition'>
                         {CATEGORY_OPTIONS.map(option => (
                           <option key={option} value={option}>
                             {option}
@@ -183,8 +181,7 @@ const TaskAssign = () => {
                       <select
                         value={priority}
                         onChange={e => setPriority(e.target.value)}
-                        className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none cursor-pointer transition'
-                        required>
+                        className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm appearance-none cursor-pointer transition'>
                         {PRIORITY_OPTIONS.map(option => (
                           <option key={option} value={option}>
                             {option.charAt(0).toUpperCase() + option.slice(1)}
@@ -222,7 +219,7 @@ const TaskAssign = () => {
                       type='date'
                       value={submittedDate}
                       onChange={e => setSubmittedDate(e.target.value)}
-                      min={new Date().toISOString().split('T')[0]}
+                      required
                       className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition' />
                   </div>
                   <div>
@@ -233,7 +230,7 @@ const TaskAssign = () => {
                       type='date'
                       value={dueDate}
                       onChange={e => setDueDate(e.target.value)}
-                      min={submittedDate}
+                      min={new Date().toISOString().split('T')[0]}
                       className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition'
                       required />
                   </div>

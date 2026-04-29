@@ -14,7 +14,8 @@ const Inbox = () => {
     setFilters({
       category: 'all',
       status: 'all',
-      priority: 'all'
+      priority: 'all',
+      assignedTo: 'all'
     })
   }
   const activeFiltersCount = (filters.category !== 'all' ? 1 : 0) + (filters.status !== 'all' ? 1 : 0) + (filters.priority !== 'all' ? 1 : 0)
