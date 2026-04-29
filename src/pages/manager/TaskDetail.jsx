@@ -6,7 +6,7 @@ import Comments from '../../components/Comments'
 import ActionConfirmModal from '../../components/ActionConfirmModal'
 import { useData } from '../../context/DataContext'
 import { IoDocumentTextOutline } from 'react-icons/io5'
-import { FaArrowLeft, FaEdit, FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import { FaArrowLeft, FaEdit, FaEye, FaRegCheckCircle, FaTimesCircle, FaTrashAlt } from 'react-icons/fa'
 import { LuCalendar, LuClock4, LuTag } from 'react-icons/lu'
 import { useAuth } from '../../context/AuthContext'
 const TaskDetail = () => {
@@ -65,9 +65,21 @@ const TaskDetail = () => {
       }
       loadTasks()
       toast.success('Task Updated')
-      navigate('/')
     } catch {
       toast.error('Failed to Update Task')
+    }
+  }
+  const deleteTask = async () => {
+    try {
+      const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+        method: 'DELETE'
+      })
+      if (!res.ok) throw new Error()
+      loadTasks()
+      toast.success('Task Deleted')
+      navigate(-1)
+    } catch {
+      toast.error('Failed to Delete Task')
     }
   }
   const today = new Date()
@@ -116,8 +128,8 @@ const TaskDetail = () => {
       label: 'Rejected'
     }
   }
-  const priority = priorityConfig[task.priority] || priorityConfig.medium
-  const status = statusConfig[task.status] || statusConfig.pending
+  const priority = priorityConfig[task.priority]
+  const status = statusConfig[task.status]
   const formatDate = (dateString) => {
     const date = new Date(dateString)
     return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
@@ -249,7 +261,7 @@ const TaskDetail = () => {
               )}
               {(user.role === 'manager' && !isDone) && (
                 <div className='p-6'>
-                  <div className='flex flex-col sm:flex-row gap-3'>
+                  <div className='flex flex-col md:flex-row gap-3'>
                     <button
                       onClick={() => {
                         setSelectedAction('approved')
@@ -286,16 +298,27 @@ const TaskDetail = () => {
                   </div>
                 </div>
               )}
-              {(user.role === 'admin' && !isDone) && (
+              {user.role === 'admin' && (
                 <div className='p-6'>
-                  <div className='flex'>
-                    <button
+                  <div className='flex flex-col md:flex-row gap-3'>
+                    {!isDone && <button
                       onClick={() => navigate(`/admin/edit/${id}`)}
                       className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-indigo-600 text-indigo-100 font-semibold rounded-lg hover:bg-indigo-700 active:scale-[0.98] transition-all duration-150'>
                       <FaEdit
                         size={20}
                         className='text-indigo-100' />
                       <span>Edit Task</span>
+                    </button>}
+                    <button
+                      onClick={() => {
+                        setSelectedAction('delete')
+                        setModalOpen(true)
+                      }}
+                      className='flex-1 cursor-pointer flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 active:scale-[0.98] transition-all duration-150'>
+                      <FaTrashAlt
+                        size={18}
+                        className='text-red-100' />
+                      <span>Delete Task</span>
                     </button>
                   </div>
                 </div>
@@ -313,7 +336,11 @@ const TaskDetail = () => {
         onCancel={() => setModalOpen(false)}
         onConfirm={(note) => {
           setModalOpen(false)
-          updateStatus(selectedAction, note)
+          if (selectedAction === 'delete') {
+            deleteTask()
+          } else {
+            updateStatus(selectedAction, note)
+          }
         }} />
     </div>
   )

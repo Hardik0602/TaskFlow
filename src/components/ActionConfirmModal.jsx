@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { FaEye, FaRegCheckCircle, FaTimesCircle } from 'react-icons/fa'
+import { FaEye, FaRegCheckCircle, FaTimesCircle, FaTrashAlt } from 'react-icons/fa'
 const ActionConfirmModal = ({ open, action, onCancel, onConfirm }) => {
   const [note, setNote] = useState('')
   useEffect(() => {
@@ -50,6 +50,17 @@ const ActionConfirmModal = ({ open, action, onCancel, onConfirm }) => {
       iconColor: 'text-blue-600',
       confirmButton: 'bg-blue-600 cursor-pointer hover:bg-blue-700',
       confirmText: 'Mark for Review'
+    },
+    delete: {
+      title: 'Delete Task',
+      message: 'Are you sure you want to delete this task?',
+      icon: (
+        <FaTrashAlt size={23} />
+      ),
+      iconBg: 'bg-red-100',
+      iconColor: 'text-red-600',
+      confirmButton: 'bg-red-600 cursor-pointer hover:bg-red-700',
+      confirmText: 'Delete'
     }
   }
   const config = actionConfig[action] || actionConfig.in_progress
@@ -74,7 +85,7 @@ const ActionConfirmModal = ({ open, action, onCancel, onConfirm }) => {
             </div>
           </div>
         </div>
-        <div className='px-6 pb-6'>
+        {action !== 'delete' && <div className='px-6 pb-6'>
           <label className='block text-sm font-medium text-slate-700 mb-2'>
             Add a note (optional)
           </label>
@@ -85,7 +96,7 @@ const ActionConfirmModal = ({ open, action, onCancel, onConfirm }) => {
             className='w-full px-4 py-3 border border-slate-300 rounded-lg text-sm resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition'
             rows={4}
             autoFocus />
-        </div>
+        </div>}
         <div className='px-6 py-4 bg-slate-50 border-t border-slate-200 flex items-center justify-end gap-3'>
           <button
             onClick={onCancel}
