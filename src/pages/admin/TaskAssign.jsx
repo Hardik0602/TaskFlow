@@ -87,11 +87,11 @@ const TaskAssign = () => {
         body: JSON.stringify(newTask)
       })
       if (!res.ok) throw new Error()
-      toast.success('assigned successfully')
+      toast.success('Task assigned')
       loadTasks()
       navigate('/admin/users')
     } catch {
-      toast.error('something went wrong')
+      toast.error('Something went wrong')
     } finally {
       setSubmitting(false)
     }

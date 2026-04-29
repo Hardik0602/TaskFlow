@@ -9,12 +9,13 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [keepSignedIn, setKeepSignedIn] = useState(false)
   const handle = async (e) => {
     e.preventDefault()
     setIsLoading(true)
+    getUsers()
     setTimeout(() => {
-      getUsers()
-      const user = login(email, password)
+      const user = login(email, password, keepSignedIn)
       if (user) {
         if (user.role === 'admin') {
           navigate('/admin')
@@ -76,16 +77,16 @@ const Login = () => {
                 </button>
               </div>
             </div>
-            {/* <div className='flex items-center'>
+            <div className='flex items-center'>
               <input
                 type='checkbox'
                 id='remember'
-                className='w-4 h-4 text-blue-600 border-slate-300 rounded focus:ring-2 focus:ring-blue-500'
-              />
+                className='w-4 h-4 text-blue-600 border-slate-300 rounded cursor-pointer'
+                onChange={() => setKeepSignedIn(!keepSignedIn)} />
               <label htmlFor='remember' className='ml-2 text-sm text-slate-700 cursor-pointer'>
                 Keep me signed in
               </label>
-            </div> */}
+            </div>
             <button
               type='submit'
               disabled={isLoading}

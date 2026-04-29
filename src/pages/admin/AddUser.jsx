@@ -17,11 +17,11 @@ const AddUser = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (!name.trim() || !email.trim() || !password.trim()) {
-            toast.error('fill all required fields')
+            toast.error('Fill all required fields')
             return
         }
         if (users.find(u => u.email === email)) {
-            toast.error('email already exists')
+            toast.error('Email already exists')
             return
         }
         const newUser = {
@@ -38,11 +38,11 @@ const AddUser = () => {
                 body: JSON.stringify(newUser)
             })
             if (!res.ok) throw new Error()
-            toast.success('user added successfully')
+            toast.success('User added')
             getUsers()
             navigate('/admin/users')
         } catch (error) {
-            toast.error('failed to add user')
+            toast.error('Something went wrong')
         } finally {
             setSubmitting(false)
         }
@@ -58,7 +58,6 @@ const AddUser = () => {
                         <span className='font-medium'>Back</span>
                     </button>
                     <h1 className='text-3xl font-bold text-slate-900'>Add New User</h1>
-                    {/* <p className='text-slate-600 mt-1'>Create a new user account and assign permissions</p> */}
                 </div>
                 <div className='bg-white rounded-lg border border-slate-200 overflow-hidden animate-slideUp' style={{ animationDelay: '150ms', animationFillMode: 'backwards' }}>
                     <form onSubmit={handleSubmit}>
@@ -121,9 +120,6 @@ const AddUser = () => {
                             <div className='pt-6 border-t border-slate-200'>
                                 <h2 className='text-lg font-semibold text-slate-900 mb-4'>Role & Permissions</h2>
                                 <div>
-                                    {/* <label className='block text-sm font-medium text-slate-700 mb-3'>
-                                        User Role
-                                    </label> */}
                                     <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
                                         <label
                                             className={`relative flex items-start p-4 border-2 rounded-lg cursor-pointer transition-all duration-200 ${role === 'manager'

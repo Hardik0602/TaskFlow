@@ -64,9 +64,9 @@ const TaskDetail = () => {
         })
       }
       loadTasks()
-      toast.success('Task Updated')
+      toast.success('Task updated')
     } catch {
-      toast.error('Failed to Update Task')
+      toast.error('Something went wrong')
     }
   }
   const deleteTask = async () => {
@@ -76,10 +76,10 @@ const TaskDetail = () => {
       })
       if (!res.ok) throw new Error()
       loadTasks()
-      toast.success('Task Deleted')
+      toast.success('Task deleted')
       navigate(-1)
     } catch {
-      toast.error('Failed to Delete Task')
+      toast.error('Something went wrong')
     }
   }
   const today = new Date()

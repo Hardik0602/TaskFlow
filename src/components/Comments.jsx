@@ -45,10 +45,10 @@ const Comments = ({ taskId }) => {
         setTimeout(() => setNewCommentId(null), 500)
       }
       loadComments()
-      toast.success('Comment Added')
+      toast.success('Comment added')
     } catch {
       setIsSubmitting(false)
-      toast.error('Failed to Add Comment')
+      toast.error('Something went wrong')
     }
   }
   const handleKeyPress = (e) => {

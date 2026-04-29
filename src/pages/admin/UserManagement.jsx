@@ -15,7 +15,6 @@ const UserManagement = () => {
           <div className='flex flex-row items-center justify-between gap-4'>
             <div>
               <h1 className='text-2xl font-bold text-slate-900'>User Management</h1>
-              {/* <p className='text-slate-600 mt-1'>Manage users</p> */}
             </div>
             <button
               onClick={() => navigate(('/admin/addUser'))}

@@ -12,22 +12,29 @@ export const AuthProvider = ({ children }) => {
       console.log(error)
     }
   }
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem('user'))
-  )
-  const login = (email, password) => {
+  const [user, setUser] = useState(() => {
+    const savedUser =
+      localStorage.getItem('user') ||
+      sessionStorage.getItem('user')
+    return savedUser ? JSON.parse(savedUser) : null
+  })
+  const login = (email, password, keepSignedIn) => {
     if (users.length === 0) {
-      toast.error('something went wrong')
+      toast.error('Something went wrong')
       return null
     }
     const found = users.find(
       u => u.email === email && u.password === password
     )
     if (!found) {
-      toast.error('invalid credentials')
+      toast.error('Invalid Credentials')
       return null
     }
-    localStorage.setItem('user', JSON.stringify(found))
+    if (keepSignedIn) {
+      localStorage.setItem('user', JSON.stringify(found))
+    } else {
+      sessionStorage.setItem('user', JSON.stringify(found))
+    }
     setUser(found)
     return found
   }

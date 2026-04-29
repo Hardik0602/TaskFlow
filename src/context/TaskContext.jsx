@@ -19,7 +19,7 @@ export function TaskProvider({ children }) {
         setTasks(data)
       } catch (error) {
         console.log(error)
-        toast.error('something went wrong')
+        toast.error('Something went wrong')
       } finally {
         setLoading(false)
       }
@@ -30,7 +30,7 @@ export function TaskProvider({ children }) {
         setTasks(data)
       } catch (error) {
         console.log(error)
-        toast.error('something went wrong')
+        toast.error('Something went wrong')
       } finally {
         setLoading(false)
       }

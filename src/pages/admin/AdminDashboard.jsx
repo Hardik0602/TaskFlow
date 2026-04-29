@@ -19,7 +19,6 @@ const AdminDashboard = () => {
           <div className='flex items-center justify-between'>
             <div>
               <h1 className='text-2xl font-bold text-slate-900'>Admin Dashboard</h1>
-              {/* <p className='text-slate-600 mt-1'>Overview of users and task load</p> */}
             </div>
             <button
               onClick={() => { loadTasks(), getUsers() }}

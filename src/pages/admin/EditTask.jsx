@@ -70,7 +70,7 @@ const EditTask = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!description.trim() || !priority || !dueDate || !assignedTo) {
-      toast.error('fill all required fields')
+      toast.error('Fill all required fields')
       return
     }
     let isValid = true
@@ -86,7 +86,7 @@ const EditTask = () => {
       }
     })
     if (!isValid) {
-      toast.error('additional detail must have both field name and value')
+      toast.error('Additional detail must have both field name and value')
       return
     }
     const updatedTask = {
@@ -104,11 +104,11 @@ const EditTask = () => {
         body: JSON.stringify(updatedTask)
       })
       if (!res.ok) throw new Error()
-      toast.success('task updated successfully')
+      toast.success('Task updated')
       loadTasks()
       navigate(-1)
     } catch {
-      toast.error('something went wrong')
+      toast.error('Something went wrong')
     } finally {
       setSubmitting(false)
     }
