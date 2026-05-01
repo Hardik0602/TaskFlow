@@ -31,7 +31,6 @@
   ],
   "tasks": [
     {
-      "id": "task-001",
       "title": "Expense Approval - Client Visit",
       "description": "Travel and logistics expense claim for the recent onsite client engagement.",
       "category": "Expense Approval",
@@ -46,10 +45,10 @@
         "currency": "INR",
         "purpose": "Client Engagement",
         "dates": "Jan 03-04, 2025"
-      }
+      },
+      "id": "a662"
     },
     {
-      "id": "task-002",
       "title": "Expense Approval - Cab Reimbursement",
       "description": "Local commute reimbursement for late-night office shift.",
       "category": "Expense Approval",
@@ -64,10 +63,10 @@
         "currency": "INR",
         "purpose": "Late Night Commute",
         "dates": "Jan 31, 2025"
-      }
+      },
+      "id": "86ab"
     },
     {
-      "id": "task-003",
       "title": "Expense Approval - Conference Travel",
       "description": "Airfare and registration fees for the upcoming Tech Summit.",
       "category": "Expense Approval",
@@ -77,10 +76,10 @@
       "submittedBy": "Vikram Seth",
       "submittedDate": "2027-03-10",
       "dueDate": "2027-03-15",
-      "details": {}
+      "details": {},
+      "id": "318a"
     },
     {
-      "id": "task-004",
       "title": "Expense Approval - Hotel Stay",
       "description": "Accommodation charges for the regional strategy meeting.",
       "category": "Expense Approval",
@@ -95,10 +94,10 @@
         "currency": "INR",
         "purpose": "Strategy Workshop",
         "dates": "Apr 05-07, 2027"
-      }
+      },
+      "id": "9139"
     },
     {
-      "id": "task-005",
       "title": "Expense Approval - Meal Allowance",
       "description": "Daily meal stipends for the field research team.",
       "category": "Expense Approval",
@@ -113,10 +112,10 @@
         "currency": "INR",
         "purpose": "Field Research",
         "dates": "Apr 28-30, 2027"
-      }
+      },
+      "id": "90ab"
     },
     {
-      "id": "task-006",
       "title": "Document Review - Sales Report",
       "description": "Comprehensive review of Q4 sales figures and performance metrics.",
       "category": "Document Review",
@@ -130,10 +129,10 @@
         "pages": "14",
         "type": "Quarterly Report",
         "department": "Sales"
-      }
+      },
+      "id": "808d"
     },
     {
-      "id": "task-007",
       "title": "Document Review - Marketing Plan",
       "description": "Feedback required on the proposed digital marketing roadmap.",
       "category": "Document Review",
@@ -147,10 +146,10 @@
         "pages": "9",
         "type": "Project Proposal",
         "department": "Marketing"
-      }
+      },
+      "id": "7723"
     },
     {
-      "id": "task-008",
       "title": "Document Review - Strategy Deck",
       "description": "Final review of the 2027 vision slides for the Board meeting.",
       "category": "Document Review",
@@ -164,10 +163,10 @@
         "pages": "28",
         "type": "Presentation",
         "department": "Corporate Strategy"
-      }
+      },
+      "id": "6d4f"
     },
     {
-      "id": "task-009",
       "title": "Document Review - HR Policy Update",
       "description": "Review of the revised remote work and inclusive hiring policies.",
       "category": "Document Review",
@@ -181,10 +180,10 @@
         "pages": "22",
         "type": "Policy Manual",
         "department": "Human Resources"
-      }
+      },
+      "id": "cc82"
     },
     {
-      "id": "task-010",
       "title": "Document Review - Compliance Checklist",
       "description": "Verification of statutory compliance items for the upcoming audit.",
       "category": "Document Review",
@@ -198,10 +197,10 @@
         "pages": "7",
         "type": "Checklist",
         "department": "Legal"
-      }
+      },
+      "id": "0b16"
     },
     {
-      "id": "task-011",
       "title": "Leave Request - Sick Leave",
       "description": "One-day medical leave application due to viral fever.",
       "category": "Leave Request",
@@ -215,10 +214,10 @@
         "days": "1",
         "reason": "Medical",
         "dates": "Jan 02, 2025"
-      }
+      },
+      "id": "60e5"
     },
     {
-      "id": "task-012",
       "title": "Leave Request - Casual Leave",
       "description": "Short leave for attending to personal family matters.",
       "category": "Leave Request",
@@ -232,10 +231,10 @@
         "days": "2",
         "reason": "Personal",
         "dates": "Feb 02-03, 2025"
-      }
+      },
+      "id": "6db3"
     },
     {
-      "id": "task-013",
       "title": "Leave Request - Vacation",
       "description": "Planned annual leave for an international trip.",
       "category": "Leave Request",
@@ -249,10 +248,10 @@
         "days": "5",
         "reason": "Travel",
         "dates": "Mar 15-19, 2027"
-      }
+      },
+      "id": "d48d"
     },
     {
-      "id": "task-014",
       "title": "Leave Request - Family Function",
       "description": "Request for time off to attend a sibling's wedding ceremony.",
       "category": "Leave Request",
@@ -266,10 +265,10 @@
         "days": "3",
         "reason": "Family Wedding",
         "dates": "May 05-07, 2027"
-      }
+      },
+      "id": "3fcc"
     },
     {
-      "id": "task-015",
       "title": "Leave Request - Personal Day",
       "description": "Urgent request for a personal day for household maintenance.",
       "category": "Leave Request",
@@ -283,10 +282,10 @@
         "days": "1",
         "reason": "Home Maintenance",
         "dates": "Jun 10, 2027"
-      }
+      },
+      "id": "b862"
     },
     {
-      "id": "task-016",
       "title": "Vendor Invoice Approval",
       "description": "High-value invoice from IT infrastructure partner for server maintenance.",
       "category": "Finance",
@@ -300,10 +299,10 @@
         "amount": "85000",
         "currency": "INR",
         "vendor": "NetSolutions Ltd"
-      }
+      },
+      "id": "af7b"
     },
     {
-      "id": "task-017",
       "title": "Reimbursement Processing",
       "description": "Processing of multiple small-scale utility reimbursements.",
       "category": "Finance",
@@ -317,10 +316,10 @@
         "amount": "6400",
         "currency": "INR",
         "count": "5"
-      }
+      },
+      "id": "5b2a"
     },
     {
-      "id": "task-018",
       "title": "Quarterly Budget Allocation",
       "description": "Review of the proposed operational budget for the second quarter.",
       "category": "Finance",
@@ -334,10 +333,10 @@
         "amount": "500000",
         "currency": "INR",
         "quarter": "Q2-2027"
-      }
+      },
+      "id": "f2d0"
     },
     {
-      "id": "task-019",
       "title": "Tax Filing Review",
       "description": "Detailed inspection of company tax filings for the previous financial year.",
       "category": "Finance",
@@ -350,10 +349,10 @@
       "details": {
         "year": "FY26-27",
         "document": "Form-16 Review"
-      }
+      },
+      "id": "409f"
     },
     {
-      "id": "task-020",
       "title": "Petty Cash Audit",
       "description": "Monthly reconciliation of office petty cash and miscellaneous expenses.",
       "category": "Finance",
@@ -367,10 +366,10 @@
         "amount": "12000",
         "currency": "INR",
         "location": "Main Office"
-      }
+      },
+      "id": "eb3d"
     },
     {
-      "id": "task-021",
       "title": "Access Request - CRM Access",
       "description": "User request for read/write access to the Salesforce CRM system.",
       "category": "Access Request",
@@ -383,10 +382,10 @@
       "details": {
         "system": "Salesforce",
         "role": "Sales Rep"
-      }
+      },
+      "id": "f745"
     },
     {
-      "id": "task-022",
       "title": "Access Request - Dashboard Viewer",
       "description": "Viewer-only access request for the marketing performance dashboard.",
       "category": "Access Request",
@@ -399,10 +398,10 @@
       "details": {
         "system": "Power BI",
         "role": "Analyst"
-      }
+      },
+      "id": "3683"
     },
     {
-      "id": "task-023",
       "title": "Access Request - Admin Portal",
       "description": "Administrative privileges required for the backend management portal.",
       "category": "Access Request",
@@ -415,10 +414,10 @@
       "details": {
         "system": "Admin Portal",
         "role": "SysAdmin"
-      }
+      },
+      "id": "04a6"
     },
     {
-      "id": "task-024",
       "title": "Access Request - HRMS",
       "description": "Employee portal access for a new joiner in the HR department.",
       "category": "Access Request",
@@ -431,10 +430,10 @@
       "details": {
         "system": "HRMS",
         "role": "HR Generalist"
-      }
+      },
+      "id": "f377"
     },
     {
-      "id": "task-025",
       "title": "Access Request - Analytics Viewer",
       "description": "Request for access to the real-time analytics portal for product monitoring.",
       "category": "Access Request",
@@ -447,10 +446,10 @@
       "details": {
         "system": "Analytics Portal",
         "role": "Product Manager"
-      }
+      },
+      "id": "e08d"
     },
     {
-      "id": "task-026",
       "title": "IT Support - Laptop Replacement",
       "description": "Hardware failure reported on a legacy machine; replacement requested.",
       "category": "IT Support",
@@ -463,10 +462,10 @@
       "details": {
         "assetTag": "LT-4456",
         "issue": "Blue Screen"
-      }
+      },
+      "id": "b059"
     },
     {
-      "id": "task-027",
       "title": "IT Support - Printer Repair",
       "description": "Jamming issues and toner leaks reported on the shared printer.",
       "category": "IT Support",
@@ -479,10 +478,10 @@
       "details": {
         "location": "Floor 3",
         "device": "HP LaserJet"
-      }
+      },
+      "id": "4f58"
     },
     {
-      "id": "task-028",
       "title": "IT Support - Network Upgrade",
       "description": "Scheduled maintenance and bandwidth upgrade for the office LAN.",
       "category": "IT Support",
@@ -495,10 +494,10 @@
       "details": {
         "area": "Office LAN",
         "type": "Hardware Upgrade"
-      }
+      },
+      "id": "dde7"
     },
     {
-      "id": "task-029",
       "title": "IT Support - Software Installation",
       "description": "Bulk installation of creative tools for the new design cohort.",
       "category": "IT Support",
@@ -511,10 +510,10 @@
       "details": {
         "software": "Adobe Suite",
         "license": "Creative Cloud"
-      }
+      },
+      "id": "6213"
     },
     {
-      "id": "task-030",
       "title": "IT Support - Mouse Replacement",
       "description": "Procurement request for a wireless peripheral for ergonomics.",
       "category": "IT Support",
@@ -527,7 +526,8 @@
       "details": {
         "item": "Wireless Mouse",
         "department": "Engineering"
-      }
+      },
+      "id": "cb9d"
     }
   ],
   "comments": []

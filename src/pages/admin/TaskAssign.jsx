@@ -24,7 +24,7 @@ const TaskAssign = () => {
   const assignee = assigneeUser?.name || ''
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState('Expense Approval')
   const [priority, setPriority] = useState('low')
   const [submittedBy, setSubmittedBy] = useState(user?.name)
   const [submittedDate, setSubmittedDate] = useState('')
@@ -67,7 +67,6 @@ const TaskAssign = () => {
       return
     }
     const newTask = {
-      id: `task-${Date.now()}`,
       title: `${category} - ${title.trim()}`,
       description: description.trim(),
       category,
@@ -220,6 +219,7 @@ const TaskAssign = () => {
                       value={submittedDate}
                       onChange={e => setSubmittedDate(e.target.value)}
                       required
+                      max={new Date().toISOString().split('T')[0]}
                       className='w-full px-4 py-2.5 bg-white border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm transition' />
                   </div>
                   <div>

@@ -28,9 +28,9 @@ const TaskDetail = () => {
           <h3 className='text-lg font-semibold text-slate-900 mb-2'>Task Not Found</h3>
           <p className='text-slate-500 mb-6'>The task you're looking for doesn't exist.</p>
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate(-1)}
             className='px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition cursor-pointer'>
-            Back to Inbox
+            Go Back
           </button>
         </div>
       </div>
