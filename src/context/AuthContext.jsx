@@ -1,10 +1,11 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
+import { API_URL } from '../config'
 const AuthContext = createContext()
 export const AuthProvider = ({ children }) => {
   const getUsers = async () => {
     try {
-      const res = await fetch('http://localhost:3000/users')
+      const res = await fetch(`${API_URL}/users`)
       const data = await res.json()
       return data
     } catch (error) {

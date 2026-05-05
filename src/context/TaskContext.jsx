@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react'
 import { useAuth } from './AuthContext'
 import { toast } from 'react-toastify'
 import Notification from '../helper/Notification'
+import { API_URL } from '../config'
 const TaskContext = createContext()
 export function TaskProvider({ children }) {
   const { user } = useAuth()
@@ -14,7 +15,7 @@ export function TaskProvider({ children }) {
     setLoading(true)
     if (user.role === 'manager') {
       try {
-        const res = await fetch(`http://localhost:3000/tasks?assignedTo=${user.email}`)
+        const res = await fetch(`${API_URL}/tasks?assignedTo=${user.email}`)
         const data = await res.json()
         setTasks(data)
       } catch (error) {
@@ -25,7 +26,7 @@ export function TaskProvider({ children }) {
       }
     } else if (user.role === 'admin') {
       try {
-        const res = await fetch('http://localhost:3000/tasks')
+        const res = await fetch(`${API_URL}/tasks`)
         const data = await res.json()
         setTasks(data)
       } catch (error) {

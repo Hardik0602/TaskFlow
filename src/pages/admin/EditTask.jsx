@@ -6,6 +6,7 @@ import { useData } from '../../context/DataContext'
 import { FaArrowLeft, FaCaretDown, FaCircleNotch } from 'react-icons/fa'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 const priorityOptions = ['low', 'medium', 'high']
+import { API_URL } from '../../config'
 const EditTask = () => {
   const { id } = useParams()
   const navigate = useNavigate()
@@ -98,7 +99,7 @@ const EditTask = () => {
     }
     try {
       setSubmitting(true)
-      const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const res = await fetch(`${API_URL}/tasks/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedTask)

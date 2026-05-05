@@ -1,11 +1,12 @@
 import { createContext, useContext, useEffect, useState } from 'react'
 import { useTasks } from './TaskContext'
+import { API_URL } from '../config'
 const DataContext = createContext()
 export function DataProvider({ children }) {
     const [users, setUsers] = useState([])
     const getUsers = async () => {
         try {
-            const res = await fetch('http://localhost:3000/users')
+            const res = await fetch(`${API_URL}/users`)
             const data = await res.json()
             setUsers(data)
         } catch (error) {

@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import Comments from '../../components/Comments'
 import ActionConfirmModal from '../../components/ActionConfirmModal'
 import { useData } from '../../context/DataContext'
+import { API_URL } from '../../config'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { FaArrowLeft, FaEdit, FaEye, FaRegCheckCircle, FaTimesCircle, FaTrashAlt } from 'react-icons/fa'
 import { LuCalendar, LuClock4, LuTag } from 'react-icons/lu'
@@ -38,7 +39,7 @@ const TaskDetail = () => {
   }
   const updateStatus = async (newStatus, note) => {
     try {
-      const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const res = await fetch(`${API_URL}/tasks/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })
@@ -51,7 +52,7 @@ const TaskDetail = () => {
           rejected: 'Reject'
         }
         const commentStatus = statusMap[newStatus]
-        await fetch(`http://localhost:3000/comments`, {
+        await fetch(`${API_URL}/comments`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -71,7 +72,7 @@ const TaskDetail = () => {
   }
   const deleteTask = async () => {
     try {
-      const res = await fetch(`http://localhost:3000/tasks/${id}`, {
+      const res = await fetch(`${API_URL}/tasks/${id}`, {
         method: 'DELETE'
       })
       if (!res.ok) throw new Error()

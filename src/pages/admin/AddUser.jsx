@@ -5,6 +5,7 @@ import { useData } from '../../context/DataContext'
 import { FaArrowLeft, FaCircleNotch, FaEye, FaEyeSlash } from 'react-icons/fa'
 import { PiSuitcase } from 'react-icons/pi'
 import { FiShield } from 'react-icons/fi'
+import { API_URL } from '../../config'
 const AddUser = () => {
     const navigate = useNavigate()
     const { getUsers, users } = useData()
@@ -32,7 +33,7 @@ const AddUser = () => {
         }
         try {
             setSubmitting(true)
-            const res = await fetch('http://localhost:3000/users', {
+            const res = await fetch(`${API_URL}/users`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(newUser)

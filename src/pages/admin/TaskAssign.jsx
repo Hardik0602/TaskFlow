@@ -14,6 +14,7 @@ const CATEGORY_OPTIONS = [
   'IT Support'
 ]
 const PRIORITY_OPTIONS = ['low', 'medium', 'high']
+import { API_URL } from '../../config'
 const TaskAssign = () => {
   const { loadTasks } = useTasks()
   const { email } = useParams()
@@ -80,7 +81,7 @@ const TaskAssign = () => {
     }
     try {
       setSubmitting(true)
-      const res = await fetch('http://localhost:3000/tasks', {
+      const res = await fetch(`${API_URL}/tasks`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newTask)

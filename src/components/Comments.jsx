@@ -3,6 +3,7 @@ import { useAuth } from '../context/AuthContext'
 import { toast } from 'react-toastify'
 import { FaCircleNotch, FaRegCommentDots } from 'react-icons/fa'
 import { VscSend } from 'react-icons/vsc'
+import { API_URL } from '../config'
 const Comments = ({ taskId }) => {
   const { user } = useAuth()
   const [comments, setComments] = useState([])
@@ -11,7 +12,7 @@ const Comments = ({ taskId }) => {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [newCommentId, setNewCommentId] = useState(null)
   const loadComments = () => {
-    fetch(`http://localhost:3000/comments?taskId=${taskId}`)
+    fetch(`${API_URL}/comments?taskId=${taskId}`)
       .then(res => res.json())
       .then(data => {
         setComments(data)
@@ -25,7 +26,7 @@ const Comments = ({ taskId }) => {
     if (!text.trim()) return
     setIsSubmitting(true)
     try {
-      await fetch(`http://localhost:3000/comments`, {
+      await fetch(`${API_URL}/comments`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -38,7 +39,7 @@ const Comments = ({ taskId }) => {
       })
       setText('')
       setIsSubmitting(false)
-      const res = await fetch(`http://localhost:3000/comments?taskId=${taskId}&_sort=id&_order=desc&_limit=1`)
+      const res = await fetch(`${API_URL}/comments?taskId=${taskId}&_sort=id&_order=desc&_limit=1`)
       const newComment = await res.json()
       if (newComment.length > 0) {
         setNewCommentId(newComment[0].id)
