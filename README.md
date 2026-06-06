@@ -54,13 +54,21 @@ cd TaskFlow
 npm install
 ```
 
-### Step 3: Start the Local Backend
+### Step 3: Environment Variables
+
+Create a `.env` file in the root directory and configure the API URL (defaults to localhost):
+
+```env
+VITE_API_URL=http://LocalIP:3000
+```
+
+### Step 4: Start the Local Backend
 
 ```bash
 npm run server
 ```
 
-### Step 4: Start the Development Server
+### Step 5: Start the Development Server
 
 ```bash
 npm run dev
@@ -122,8 +130,10 @@ TaskFlow/
 │   │       ├── Profile.jsx
 │   │       └── TaskDetail.jsx   # Also used by admin; has admin-only actions
 │   ├── App.jsx              # Router configuration
+│   ├── config.js            # Environment config
 │   ├── index.css
 │   └── main.jsx             
+├── .env                     # Environment variables
 └── db.json                  # Mock database
 ```
 
