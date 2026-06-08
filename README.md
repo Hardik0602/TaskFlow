@@ -15,15 +15,43 @@ A React-based web application built to streamline how managers receive, review, 
 * 🔐 Role-based access control with protected routes for manager and admin roles
 * 💾 Session persistence via local or session storage with "Keep me signed in" option
 
-<!-- ## Screenshots
+## Screenshots
 
 <details>
-<summary>Click to view all screenshots</summary>
+<summary>Click to view sample screenshots</summary>
+
+### Manager Dashboard
+
+<img src="./public/md.png" alt="Manager Dashboard" width="300"/>
 
 ### Inbox
 
-<img src="./public/inbox.png" alt="inbox" width="600"/>
-</details> -->
+<img src="./public/mi.png" alt="Inbox" width="300"/>
+
+### Manager Profile
+
+<img src="./public/mp.png" alt="Manager Profile" width="300"/>
+
+### Manager Task View
+
+<img src="./public/mtv.png" alt="Manager Task View" width="300"/>
+
+### Admin Dashboard
+
+<img src="./public/ad.png" alt="Admin Dashboard" width="300"/>
+
+### Admin Report
+
+<img src="./public/sr.png" alt="Admin Report" width="300"/>
+
+### User Management
+
+<img src="./public/um.png" alt="User Management" width="300"/>
+
+### Admin Task View
+
+<img src="./public/atv.png" alt="Admin Task View" width="300"/>
+</details>
 
 ## Tech Stack
 
